@@ -1,0 +1,218 @@
+doctype html
+/[if lt IE 7]
+  html.no-js.ie6.oldie lang="en"
+/[if IE 7]
+  html.no-js.ie7.oldie lang="en"
+/[if IE 8]
+  html.no-js.ie8.oldie lang="en"
+/[if gte IE 8]
+  html.no-js lang="en"
+
+head
+  title = "Kale Krate"
+  == partial(:'shared/meta')
+  == partial(:'shared/scripts')
+  == css :application
+  == css :minimal_full
+
+body
+
+  .form
+    .form-header
+      h1 Kale Krate
+
+    .form-bar
+      .subscription-name-container
+        strong.subscription-name Kale Lover's Crate
+      .subscription-pricing-container
+        .subscription-pricing
+          span.subscription-price $20.99
+          span.subscription-frequency
+          | / month
+
+    .confirmation
+      .confirmation-body
+        h2.confirmation-messaging Thank you for subscribing!
+
+
+    form method="post" action="/api/subscriptions/new"
+      input type="hidden" data-recurly="token" name="recurly-token"
+
+      .row
+        .form-errors.form-errors__hidden
+          strong Oops! The following fields appear to be invalid:
+          ul
+
+      .row.customer-fields--name
+        .form-input.form-input__first_name
+          label for="first_name" First Name
+          input type="text" data-recurly="first_name" id="first_name" name="first-name"
+
+        .form-input.form-input__last_name
+          label for="last_name" Last Name
+          input type="text" data-recurly="last_name" id="last_name" name="last-name"
+
+      .row.customer-fields--card-number
+        .form-input.form-input__number
+          label for="number" Credit Card Number
+          input type="text" data-recurly="number" id="number" name="number"
+          span.icon.icon-card.icon-card__generic
+          span.icon.icon-lock
+
+      .row.customer-fields--name
+        .form-input.form-input__selection.customer-fields--card-expiry.form-input__month.form-input__year
+          label for="month" Expiration
+          input type="text" data-recurly="month" id="month" name="month" placeholder="MM" maxlength="2"
+          input type="text" data-recurly="year" id="year" name="year" placeholder="YY" maxlength="2"
+
+        .form-input.customer-fields--card-cvv.form-input__cvv
+          label for="cvv" CVC
+          input type="text" data-recurly="cvv" id="cvv" name="cvv" maxlength="4"
+
+      .row.customer-fields--address
+        .form-input
+          label for="address" Address
+          input type="text" data-recurly="address" id="address" name="address"
+
+      .row.customer-fields--city
+        .form-input
+          label for="city" City
+          input type="text" data-recurly="city" id="city" name="city"
+
+      .row.customer-fields--card-details
+        .form-input
+          label for="postal_code" State
+          .select-wrap
+            select id="state" name="state"
+              == StatesList.to_options
+
+        .form-input
+          label for="postal_code" Zip Code
+          input type="text" data-recurly="postal_code" id="postal_code" name="postal-code" maxlength="5"
+
+        .form-input
+          label for="country" Country
+          .select-wrap
+          select id="country" name="country"
+            == select_options country_choices
+
+      .row
+        input type='submit' id="subscribe" class="btn-submit" value="Subscribe"
+
+
+
+javascript:
+  var error_fields = {
+    first_name: 'First name',
+    last_name: 'Last name',
+    email: 'Email address',
+    number: 'Credit Card number',
+    postal_code: 'Postal Code',
+    month: 'Expiration Month',
+    year: 'Expiration Year'
+  }
+
+  // Configure recurly.js
+  //recurly.configure('9bed482cacae41748f405c2d361fdc6a');
+  recurly.configure('sc-Hw20ERMh8bzGFiWKO7NvDB');
+
+
+  // On form submit, we stop submission to go get the token
+  $('form').on('submit', function (event) {
+    event.preventDefault();
+
+    // Reset the errors display
+    $('#errors').text('');
+    $('input').removeClass('error');
+    $('.form-input').removeClass('form-input__error');
+
+    // Disable the submit button
+    $('.btn-submit').prop('disabled', true);
+
+    var form = this;
+
+    // Now we call recurly.token with the form. It goes to Recurly servers
+    // to tokenize the credit card information, then injects the token into the
+    // data-recurly="token" field above
+    recurly.token(form, function (err, token) {
+
+      console.log(err);
+
+      if (err) {
+        error(err);
+      }
+      else {
+        var data = {
+          "recurly-token": $('input[name="recurly-token"]').val(),
+          "first-name": $('input[name="first-name"]').val(),
+          "last-name": $('input[name="last-name"]').val()
+          //"email": $('input[name="email"]').val()
+        };
+
+        $.ajax({
+          type: "POST",
+          url: '/api/subscriptions/new',
+          data: data,
+          success: subscription_created(data),
+          dataType: 'json'
+        });
+
+      };
+
+    });
+
+  });
+
+  function subscription_created(data) {
+    $('form').addClass('form__success');
+
+    $('.confirmation').addClass('confirmation__show');
+    $('.confirmation-messaging').addClass('animate');
+  }
+
+  $(document).ready(function() {
+
+    // Identity card type
+    $("#number").on('change', function(event) {
+      var card_number = $("#number").val()
+        , card_type = recurly.validate.cardType(card_number)
+        , card_is_valid = recurly.validate.cardNumber($("#number").val())
+        , number_field = $('.customer-fields--card-number .form-input');
+
+      if(card_is_valid) {
+        $(number_field).removeClass('form-input__error');
+      }
+      else {
+        $(number_field).addClass('form-input__error');
+      }
+
+      if((card_type == 'default') || (card_type == 'unknown')) {
+        $('.icon-card').addClass('icon-card__generic');
+        $('.icon-card').removeClass('icon-card__visa icon-card__mastercard icon-card__amex icon-card__visa discover');
+      }
+      else {
+        $('.icon-card').removeClass('icon-card__generic');
+        $('.icon-card').addClass('icon-card__' + card_type);
+      }
+    });
+
+  });
+
+
+  // A simple error handling function to expose errors to the customer
+  function error (err) {
+    var errors_markup = $.map(err.fields, function (field) {
+      $('.form-input__' + field).addClass('form-input__error');
+      return '<li class="form-errors--invalid-field">'+ error_fields[field] +'</li>';
+    }).join('');
+
+    $('.form-errors').removeClass('form-errors__hidden');
+    $('.form-errors ul')
+      .empty()
+      .append(errors_markup);
+
+    $('input[type="submit"]').prop('disabled', false);
+    $.each(err.fields, function (i, field) {
+      $('[data-recurly=' + field + ']').addClass('error');
+    });
+  }

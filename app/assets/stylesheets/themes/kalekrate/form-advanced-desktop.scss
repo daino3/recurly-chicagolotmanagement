@@ -1,0 +1,132 @@
+@import 'variables';
+@import 'grid';
+@import 'mixins';
+
+
+form {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+
+  @include mq($xsmall) {
+    width: grid-width(14);
+  }
+
+  @include mq($small) {
+    width: grid-width(14);
+  }
+
+  @include mq($medium) {
+    width: grid-width(14);
+  }
+
+  @include mq($large) {
+    width: grid-width(14);
+  }
+
+  @include mq($xlarge) {
+    width: grid-width(14);
+  }
+
+  @include mq($xxlarge) {
+    width: grid-width(14);
+  }
+}
+
+ .subscription-details-container {
+    float: left;
+    background-color: #FAFAFA;
+    margin: 0 auto;
+    overflow: hidden;
+    width: grid-width(9);
+
+    @include mq($small) {
+      border: 1px solid #D1DBDF;
+    }
+
+    @include mq($large) {
+      float: left;
+      width: grid-width(9);
+    }
+
+    @include mq($xlarge) {
+      @include border-radius(5px);
+      @include box-shadow(0px 2px 0px #CCCCCC);
+      width: grid-width(9);
+    }
+    @include mq($xxlarge) {
+      width: grid-width(9);
+    }
+  }
+
+
+    .order-summary-container {
+  
+    width: 100%;
+
+    @include mq($medium) {
+      width: grid-width(5);
+    }
+
+    @include mq($large) {
+      width: grid-width(5);
+    }
+
+    @include mq($xlarge) {
+      width: grid-width(5);
+    }
+
+    @include mq($xxlarge) {
+      float: right;
+      width: grid-width(5);
+    }
+  }
+
+
+.subscription-name-container {
+    float:left;
+    width: 45%;
+}
+.form-bar .select-wrap.quantity {
+    width:12%;
+    margin: 0 15px;
+}
+.form-bar .select-wrap.curr {
+    width:15%;
+}
+.form-bar .select-wrap:before {
+  right: 3px;
+}
+
+.confirmation-advanced {
+  float:left;
+  color: #48626c;
+  margin-bottom:25px;
+    .item {
+      display:block;
+      padding-bottom:5px;
+    }
+}
+.confirmation-address {
+    width:55%;
+    margin-left:25px;
+}
+.confirmation-payment {
+    width:25%;
+    margin-right:25px;
+    strong {
+      padding-right:5px;
+    }
+}
+.addons-container.addons-confirmation {
+    padding-bottom:25px;
+    .addon-item--name {
+      line-height:40px;
+    }
+    .addons-list--item {
+      min-height: 40px;
+      max-height:40px;
+    }
+}
+
+  

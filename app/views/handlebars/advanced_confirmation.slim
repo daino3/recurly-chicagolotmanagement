@@ -1,0 +1,29 @@
+handlebar id="advanced-confirmation-template" type="text/x-handlebars-template"
+	| {{#list}} 
+	.row
+		| {{#if addons}} 
+		.addons-container.addons-confirmation
+	    	h3.section-title--addons Add-on Items
+	    	ul.addons-list
+	    	| {{{addons}}}
+		| {{/if}}
+	.row
+  		h3.section-title--addons Billing Information
+	.row
+  		.confirmation-address.confirmation-advanced
+	  		span.item 
+		  	| {{firstName}} {{lastName}}
+		  	span.item 
+		  	| {{address}} 
+		  	span.item 
+		  	| {{city}}, {{state}} {{zip}} {{country}}
+		.confirmation-payment.confirmation-advanced
+			span.item
+			| XXXX-XXXX-XXXX-{{number}}
+			span.item 
+				strong Expiration:
+				| {{month}}/{{year}}
+	| {{/list}}
+
+
+

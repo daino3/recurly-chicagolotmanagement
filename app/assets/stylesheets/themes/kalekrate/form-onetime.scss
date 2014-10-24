@@ -1,0 +1,49 @@
+input.quantity {
+  background:#91C11E;
+  border:1px solid #fff;
+  color:#fff;
+  width:100%;
+  padding:8px;
+  height:41px;
+  font-size:18px;
+  &:focus {
+    border:1px solid #fff;
+  }
+}
+.quantity-wrap {
+  width:40%;
+  right:-40px;
+  top:21px;
+}
+.quantity-wrap:after {
+  content:url('/images/icons/number-arrow-green.png'); 
+}
+.quantity-wrap:before {
+    background: #91C11E;
+    right:1px;
+}
+.quantity-wrap:after {
+    top:7px;
+    right:8px;
+}
+.subscription-pricing {
+  position:relative;
+  float:right;
+}
+.subscription-name-container.update-billing {
+  width:100%;
+  padding: 37px 0 30px;
+  .subscription-name {
+    width:100%;
+    text-align:center;
+    position:static;
+  }
+}
+
+.subscription-pricing-container.update-billing {
+  width:100%;
+  .subscription-pricing {
+    position:static;
+    float:none;
+  }
+}

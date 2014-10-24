@@ -1,0 +1,17 @@
+handlebar id="addon-summary-template" type="text/x-handlebars-template"
+  | {{#if list}}
+  .row
+    ul.addons-list
+      | {{#list}}
+      li.addons-list--item
+        span.addon-item--name
+          | {{name}}
+        .addon-item--pricing
+          span.addon-item--price
+
+            span data-recurly="addon_price" data-recurly-addon='{{code}}'
+              | ${{price}}
+        span.addon-item--quantity-summary data-recurly-addon='{{quantity}}' {{quantity}}x
+
+      | {{/list}}
+  | {{/if}}
