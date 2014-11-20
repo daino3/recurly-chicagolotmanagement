@@ -6,7 +6,6 @@ $(document).ready(function() {
     // Disable the submit button
     $('#subscribe').prop('disabled', true);
     clear_errors();
-    check_required_fields()
 
     var form = this;
 
@@ -22,7 +21,7 @@ $(document).ready(function() {
         };
       });
     }//end if
-    
+
     else {
 
       recurly.paypal({ description: 'test' }, function (err, token) {
@@ -41,11 +40,11 @@ $(document).ready(function() {
 
     }
 
-    
+
 
   });
 
-  
+
 
 
 

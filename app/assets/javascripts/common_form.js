@@ -1,4 +1,4 @@
-var invalid_fields = [];
+var invalid_fields = {};
 var error_fields = {
   first_name: 'First name',
   last_name: 'Last name',
@@ -44,7 +44,7 @@ function create_subscription () {
 }
 
 //NOTE: made this new function because the subscription_created function was too specific, didn't work for the advanced mobile version.
-// if you change 'form' .addClass('form__success') to something more generic, this function can be consolidated.  
+// if you change 'form' .addClass('form__success') to something more generic, this function can be consolidated.
 function create_subscription_advanced () {
   var data = {
     "recurly-token": $('input[name="recurly-token"]').val(),
@@ -114,23 +114,8 @@ function subscription_created_advanced(data) {
 }
 
 function clear_errors() {
-  while(invalid_fields.length > 0) {
-    invalid_fields.pop();
-  }
+  invalid_fields = {};
   $('.form-errors--invalid-field').removeClass('form-errors--invalid-field');
-}
-
-function check_required_fields() {
-  var fields = $('.form-input__required');
-
-  $.each(fields, function(i, field) {
-    if($(field).val() == "") {
-      invalid_fields.push($(field).attr('data-recurly'));
-    }
-    else {
-      $('.form-input__' + $(field).attr('data-recurly')).removeClass('form-input__error');
-    }
-  });
 }
 
 function paypalError (err) {
@@ -139,8 +124,8 @@ function paypalError (err) {
       errors_markup = '<li class="form-errors--invalid-field">' + err.niceMessage + '</li>';
       } else {
         $.each(err.fields, function(i, field) {
-          if(typeof invalid_fields[field] == undefined) {
-            invalid_fields.push(field);
+          if(typeof invalid_fields[field] === 'undefined') {
+            invalid_fields[field] = field;
           }
         });
 
@@ -165,8 +150,8 @@ function error (err) {
     errors_markup = '<li class="form-errors--invalid-field">' + err.niceMessage + '</li>';
   } else {
     $.each(err.fields, function(i, field) {
-      if(typeof invalid_fields[field] == undefined) {
-        invalid_fields.push(field);
+      if(typeof invalid_fields[field] === 'undefined') {
+        invalid_fields[field] = field;
       }
     });
 
