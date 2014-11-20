@@ -65,18 +65,26 @@ select, input.quantity {
 
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    select {padding-right:18px}
+  select {
+    padding-left: 10px;
+    padding-right: 18px;
+  }
 }
 
 .select-wrap, .quantity-wrap {position:relative}
 .select-wrap:after,
 .quantity-wrap:after {
-    content:url('/images/icons/select-arrow-small.png');
-    right:8px; top:10px;
-    padding:0 0 2px;
-    border:0;
-    position:absolute;
-    pointer-events:none;
+    content: ' ';
+    background: url('/images/icons/select-arrow-small@2x.png') center no-repeat;
+    right: 12px;
+    top: 16px;
+    padding: 0 0 2px;
+    border: 0;
+    position: absolute;
+    pointer-events: none;
+    background-size: 9px 6px;
+    width: 9px;
+    height: 6px;
 }
 
 .select-wrap:before, .quantity-wrap:before {

@@ -94,6 +94,7 @@ body
           label for="country" Country
           .select-wrap
           select id="country" name="country"
+            option
             == select_options country_choices
 
       .row
@@ -113,7 +114,6 @@ javascript:
   }
 
   // Configure recurly.js
-  //recurly.configure('9bed482cacae41748f405c2d361fdc6a');
   recurly.configure('sc-Hw20ERMh8bzGFiWKO7NvDB');
 
 

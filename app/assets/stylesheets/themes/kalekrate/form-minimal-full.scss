@@ -138,28 +138,6 @@
 }
 
 .customer-fields--card-expiry {
-  [id="month"],
-  [id="year"] {
-   text-align: center;
-
-    &::-webkit-input-placeholder {
-       text-align: center;
-    }
-
-    &:-moz-placeholder { /* Firefox 18- */
-       text-align: center;
-    }
-
-     ::-moz-placeholder {  /* Firefox 19+ */
-       text-align: center;
-    }
-
-    &:-ms-input-placeholder {
-       text-align: center;
-    }
-
-  }
-
   [id="month"] {
     @include border-top-right-radius(0px);
     @include border-bottom-right-radius(0px);
