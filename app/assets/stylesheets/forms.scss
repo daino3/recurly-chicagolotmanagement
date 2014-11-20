@@ -193,7 +193,8 @@ input[type='submit'] {
   }
 
   .icon-card__generic {
-    background: url('/images/icons/card-generic.png') top left no-repeat;
+    background: url('/images/icons/card-generic@2x.png') top left no-repeat;
+    background-size: 41px 25px;
   }
 
   .icon-card__visa {
@@ -213,7 +214,7 @@ input[type='submit'] {
   }
 
 .icon-lock {
-  background: url('/images/icons/icon-lock.png') top left no-repeat;
+  background: url('/images/icons/icon-lock@2x.png') top left no-repeat;
   display: block;
   height: 16px;
   width: 10px;
@@ -221,6 +222,7 @@ input[type='submit'] {
   position: absolute;
   right: 10px;
   bottom: 17px;
+  background-size: 10px 16px;
 }
 
 .form-errors {
