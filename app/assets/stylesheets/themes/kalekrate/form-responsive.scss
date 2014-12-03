@@ -1,0 +1,40 @@
+@import 'variables';
+@import 'grid';
+@import 'mixins';
+
+.form-input__state {
+  float: left;
+  padding-right: 7px;
+  width: 70%;
+
+  & select {
+    width: 100%;
+  }
+
+  @include mq($large) {
+    width: 30%;
+  }
+}
+
+.form-input__postal-code {
+  float: left;
+  padding-left: 7px;
+  padding-right: 0;
+  width: 30%;
+
+  @include mq($large) {
+    padding-right: 7px;
+    width: 20%;
+  }
+}
+
+.form-input__country {
+  width: 100%;
+  padding-left: 0;
+  padding-top: 10px;
+
+  @include mq($large) {
+    width: 50%;
+    padding-left: 7px;
+  }
+}

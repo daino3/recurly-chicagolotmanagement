@@ -76,6 +76,10 @@ module KaleKrate
         '/css/themes/kalekrate/form-advanced-desktop.css'
       ]
 
+      css :mobile, '/mobile.css', [
+        '/css/themes/kalekrate/form-responsive.css'
+      ]
+
       serve '/js', from: 'app/assets/javascripts'
 
       js :minimal_form, '/minimal_form.js', [

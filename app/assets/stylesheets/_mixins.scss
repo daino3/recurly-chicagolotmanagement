@@ -9,12 +9,6 @@
   }
 }
 
-@mixin respondTo($media) {
-  @media #{$media} {
-    @content;
-  }
-}
-
 @mixin boxsizing {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

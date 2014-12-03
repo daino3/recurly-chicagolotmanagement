@@ -35,41 +35,28 @@
 .form-input__state {
   float: left;
   padding-right: 7px;
-  width: 70%;
+  width: 30%;
 
   & select {
     width: 100%;
-  }
-
-  @include mq($large) {
-    width: 30%;
   }
 }
 
 .form-input__postal-code {
   float: left;
   padding-left: 7px;
-  width: 30%;
-
-  @include mq($large) {
-    padding-right: 7px;
-    width: 20%;
-  }
+  padding-right: 7px;
+  width: 20%;
 }
 
 .form-input__country {
-  width: 100%;
-
-  @include mq($large) {
-    width: 50%;
-    padding-left: 7px;
-  }
-
+  width: 50%;
+  padding-left: 7px;
 }
 
-  [id="country"] {
-    width: 100%;
-  }
+[id="country"] {
+  width: 100%;
+}
 
 
 .addons-container {
@@ -354,7 +341,7 @@ form {
       content: url('/images/icons/number-arrow-green.png');
     }
     .select-wrap.quantity:before {
-      
+
     }
     .select-wrap.curr {
       width: 25%;
@@ -427,4 +414,4 @@ form {
     color: #48626c;
   }
 
-   
+
