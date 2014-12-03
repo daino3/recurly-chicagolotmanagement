@@ -304,7 +304,7 @@ form {
   }
 
   .select-wrap:before {
-    right:1px
+    // right:1px
   }
   .select-wrap:after {
     top: 8px;
@@ -338,7 +338,10 @@ form {
       margin: 0 10px 0 3px;
     }
     .select-wrap.quantity:after {
-      content: url('/images/icons/number-arrow-green.png');
+      background: url('/images/icons/number-arrow-green.png');
+      top: 8px;
+      width: 19px;
+      height: 28px;
     }
     .select-wrap.quantity:before {
 
@@ -357,8 +360,11 @@ form {
       top: 1px;
     }
     .select-wrap:after {
-      content:url('/images/icons/select-arrow-green.png');
-      top:10px;
+      background: url('/images/icons/select-arrow-green.png');
+      top: 15px;
+      right: 10px;
+      width: 19px;
+      height: 12px;
     }
   }
 

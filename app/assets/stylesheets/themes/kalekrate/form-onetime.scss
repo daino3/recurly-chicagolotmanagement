@@ -16,7 +16,8 @@ input.quantity {
   top:21px;
 }
 .quantity-wrap:after {
-  content:url('/images/icons/number-arrow-green.png'); 
+  background: url('/images/icons/number-arrow-green.png');
+  width: 19px;
 }
 .quantity-wrap:before {
     background: #91C11E;

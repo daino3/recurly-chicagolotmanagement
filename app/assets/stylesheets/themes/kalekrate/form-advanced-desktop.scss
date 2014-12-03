@@ -61,7 +61,7 @@ form {
 
 
     .order-summary-container {
-  
+
     width: 100%;
 
     @include mq($medium) {
@@ -93,9 +93,6 @@ form {
 }
 .form-bar .select-wrap.curr {
     width:15%;
-}
-.form-bar .select-wrap:before {
-  right: 3px;
 }
 
 .confirmation-advanced {
@@ -129,4 +126,4 @@ form {
     }
 }
 
-  
+
