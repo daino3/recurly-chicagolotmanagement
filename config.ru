@@ -1,3 +1,3 @@
-require './app'
+require './config/environment'
 
 run ChicagoLotManagement::App

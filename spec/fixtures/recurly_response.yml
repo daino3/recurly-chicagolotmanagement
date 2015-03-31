@@ -1,0 +1,3 @@
+recurly_success_response:
+  HEADER: 'hello'
+  status: 200

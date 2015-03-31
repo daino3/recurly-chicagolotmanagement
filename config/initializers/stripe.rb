@@ -1,0 +1,1 @@
+Stripe.api_key = ENV['RECURLY_API_KEY']

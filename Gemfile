@@ -12,8 +12,25 @@ gem 'sass'
 gem 'sinatra-assetpack'
 
 # Misc
-gem 'dotenv'
 gem 'rake'
-gem 'recurly'
+gem 'stripe'
+gem 'hashie'
+
+# Database
+gem 'pg'
+gem 'activerecord'
+gem 'activesupport'
+
+group :development, :test do
+  gem 'pry'
+end
+
+group :test do
+  gem 'sqlite3'
+  gem 'rspec'
+  gem 'capybara'
+  gem 'rack-test'
+end
+
 
 ruby '2.1.2'
