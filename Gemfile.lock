@@ -24,9 +24,11 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
+    daemons (1.2.2)
     diff-lcs (1.2.5)
     domain_name (0.5.23)
       unf (>= 0.0.5, < 1.0.0)
+    eventmachine (1.0.7)
     hashie (3.2.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -100,6 +102,10 @@ GEM
       mime-types (>= 1.25, < 3.0)
       rest-client (~> 1.4)
     temple (0.6.8)
+    thin (1.6.3)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0)
+      rack (~> 1.0)
     thread_safe (0.3.4)
     tilt (1.4.1)
     tzinfo (1.2.2)
@@ -132,3 +138,4 @@ DEPENDENCIES
   slim
   sqlite3
   stripe
+  thin

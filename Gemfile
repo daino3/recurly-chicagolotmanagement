@@ -15,6 +15,7 @@ gem 'sinatra-assetpack'
 gem 'rake'
 gem 'stripe'
 gem 'hashie'
+gem 'thin'
 
 # Database
 gem 'pg'
