@@ -9,7 +9,7 @@ doctype html
   html.no-js lang="en"
 
 head
-  title = "Kale Krate"
+  title = "Chicago Lot Management"
   == partial(:'shared/meta')
   == partial(:'shared/scripts')
   == css :application
@@ -26,16 +26,9 @@ body
           .subscription-name-container
             .select-wrap.plan
               select data-recurly="plan" id="plan" name="plan" class="plan"
-                option value="kale-fan" Kale Fan
-                option value="kale-krazy" Kale Krazy
-
-          .select-wrap.quantity
-            input type="number" data-recurly="plan_quantity" id="plan_quantity" name="plan-quantity" class="form-input__required" value="1"
-
-          .select-wrap.curr
-            select data-recurly="currency_code" id="currency_code" name="currency_code" class="curr"
-              option value="USD" USD
-              option value="EUR" EUR
+                option value="kale-fan" Observation
+                option value="kale-krazy" Basic
+                option value="kale-krazy" Premium
 
           .subscription-pricing-container
             .subscription-pricing
@@ -52,16 +45,6 @@ body
         section.billing-info-container.hide-form-onsuccess
           .row
             h3.section-title--billing Billing Information
-            div.payment-type
-              a href="#credit-card" id="payby-credit-card" class="active" Credit Card
-              a href="#paypal" id="payby-paypal" PayPal
-          
-            div.customer-fields--name
-              .form-input.form-input__first_name
-                input type="text" data-recurly="first_name" id="first_name" name="first-name" class="form-input__required" placeholder="First Name"
-
-              .form-input.form-input__last_name
-                input type="text" data-recurly="last_name" id="last_name" name="last-name" class="form-input__required" placeholder="Last Name"
 
           div#credit-card.panel
             .row.customer-fields--email
@@ -99,30 +82,14 @@ body
 
               .form-input.form-input__postal-code
                 input type="text" data-recurly="postal_code" id="postal_code" name="postal-code" class="form-input__required" placeholder="Zip Code"
-            
-              .form-input.form-input__country
-                .select-wrap
-                  select data-recurly="country" id="country" name="country" class="form-input__required"
-                    option Country
-                    == select_options country_choices
+
 
       .order-summary-container
         header.order-summary-title
           h2 Order Summary
         section.order-summary-details
           .row.order-summary
-            div.addons-summary-container
-              div.addons-items-summary
-              div.row.coupon
-                ul.addons-list
-                  li.addons-list--item
-                    span.addon-item--name
-                      a.coupon-text href="#" Enter coupon code
-                      span.hidden  
-                          input type="text" data-recurly="coupon" placeholder="Enter coupon code" class="coupon-code"
-                      span.addon-item--pricing
-                        span.coupon-none --
-                        
+
             div.tax
               | Tax
               span.total-amount
@@ -136,9 +103,9 @@ body
 
               .confirmation
                 .confirmation-body
-                  h2.confirmation-messaging 
-                    span Thank you for subscribing. 
-                    br You will be billed 
+                  h2.confirmation-messaging
+                    span Thank you for subscribing.
+                    br You will be billed
                     span data-recurly="currency_symbol"
                     span data-recurly="total_next" name="total-next"
                     span  every month.
@@ -147,7 +114,3 @@ body
             input type='submit' id="subscribe" class="btn-submit" value="Subscribe"
             input type="hidden" id="recurly-token" name="recurly-token"
 
-
-  == partial(:'handlebars/addons')
-  == partial(:'handlebars/addons_summary')
-  == partial(:'handlebars/advanced_confirmation')

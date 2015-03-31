@@ -1,3 +1,3 @@
 require './app'
 
-run KaleKrate::App
+run ChicagoLotManagement::App

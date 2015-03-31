@@ -39,14 +39,7 @@ $(document).ready(function() {
       });
 
     }
-
-
-
   });
-
-
-
-
 
 
   // Identity card type

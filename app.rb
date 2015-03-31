@@ -5,6 +5,7 @@ require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'sinatra/support'
 require 'sinatra/partial'
+# require 'pry'
 
 require_relative 'helpers/init'
 
@@ -19,7 +20,7 @@ Dotenv.load
 Recurly.subdomain = ENV['RECURLY_SUBDOMAIN']
 Recurly.api_key = ENV['RECURLY_API_KEY']
 
-module KaleKrate
+module ChicagoLotManagement
   class App < Sinatra::Base
     register Sinatra::AssetPack
     register Sinatra::Partial
@@ -38,6 +39,7 @@ module KaleKrate
     end
 
     Sass.load_paths << File.join(root, 'app', 'assets', 'stylesheets')
+
     assets {
 
       serve '/css', from: 'app/assets/stylesheets'
@@ -47,112 +49,34 @@ module KaleKrate
         '/css/forms.css'
       ]
 
-      css :minimal, '/minimal.css', [
-        '/css/themes/kalekrate/form-base.css',
-        '/css/themes/kalekrate/form-minimal.css'
-      ]
-
-      css :minimal_full, '/minimal_full.css', [
-        '/css/themes/kalekrate/form-base.css',
-        '/css/themes/kalekrate/form-minimal-full.css'
-      ]
-
-      css :one_time, '/one_time.css', [
-        '/css/themes/kalekrate/form-base.css',
-        '/css/themes/kalekrate/form-minimal-full.css',
-        '/css/themes/kalekrate/form-onetime.css'
-      ]
-
       css :advanced, '/advanced.css', [
-        '/css/themes/kalekrate/form-base.css',
-        '/css/themes/kalekrate/form-minimal.css',
-        '/css/themes/kalekrate/form-advanced.css'
+        '/css/themes/form-base.css',
+        '/css/themes/form-minimal.css',
+        '/css/themes/form-advanced.css'
       ]
 
       css :advanced_desktop, '/advanced_desktop.css', [
-        '/css/themes/kalekrate/form-base.css',
-        '/css/themes/kalekrate/form-minimal.css',
-        '/css/themes/kalekrate/form-advanced.css',
-        '/css/themes/kalekrate/form-advanced-desktop.css'
-      ]
-
-      css :mobile, '/mobile.css', [
-        '/css/themes/kalekrate/form-responsive.css'
+        '/css/themes/form-base.css',
+        '/css/themes/form-minimal.css',
+        '/css/themes/form-advanced.css',
+        '/css/themes/form-advanced-desktop.css'
       ]
 
       serve '/js', from: 'app/assets/javascripts'
 
-      js :minimal_form, '/minimal_form.js', [
-        '/js/common_form.js',
-        '/js/minimal_form.js'
-      ]
-
       js :advanced_form, '/advanced_form.js', [
         '/js/common_form.js',
-        '/js/minimal_form_v2.js',
-        '/js/addons.js',
-        '/js/pricing.js',
-        '/js/handlebars-latest.js'
-      ]
-
-      js :advanced_form_v2, '/advanced_form_v2.js', [
-        '/js/common_form.js',
-        '/js/minimal_form_v2.js',
-        '/js/addons.js',
-        '/js/pricing.js',
-        '/js/handlebars-latest.js'
-      ]
-
-      js :one_time, '/one_time.js', [
-        '/js/common_form.js',
-        '/js/one_time.js',
-      ]
-
-      js :update_billing, '/update_billing.js', [
-        '/js/common_form.js',
-        '/js/update_billing.js',
-      ]
-
-      js :amazon_form, '/amazon_form.js', [
-        '/js/common_form.js',
-        '/js/amazon_form.js',
-        '/js/addons.js',
-        '/js/pricing.js',
-        '/js/handlebars-latest.js'
       ]
 
       serve '/images', from: 'app/assets/images'
     }
 
-    get '/subscribe-minimal' do
-      slim :minimal
-    end
-
-    get '/subscribe-more' do
-      slim :more
-    end
-
     get '/subscribe-advanced' do
       slim :advanced
     end
 
-    get '/subscribe-advanced-mobile' do
-      slim :advanced_mobile
-    end
-
-    get '/subscribe-amazon' do
-      slim :amazon
-    end
-
-    get '/one-time-transaction' do
-      slim :one_time
-    end
-
-    get '/update-billing' do
-      slim :update_billing
-    end
-
     post '/api/subscriptions/new' do
+      binding.pry
       begin
         subscription = Recurly::Subscription.create plan_code: 'kale-fan',
           account: {
