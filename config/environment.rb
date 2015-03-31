@@ -27,7 +27,7 @@ require 'slim'
 require 'hashie'
 # stripe gem
 require 'stripe'
-require 'pry'
+# require 'pry'
 require 'yaml'
 # Used to create unique account_codes
 require 'securerandom'
