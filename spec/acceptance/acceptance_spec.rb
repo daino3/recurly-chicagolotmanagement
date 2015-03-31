@@ -10,7 +10,7 @@ describe 'route' do
       }.to change(User, :count).by(1)
     end
 
-    it 'sends an application to recurly\'s api' do
+    it 'sends an application to stripe\'s api' do
       1 == 1
     end
   end

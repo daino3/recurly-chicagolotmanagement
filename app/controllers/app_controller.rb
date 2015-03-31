@@ -14,7 +14,7 @@ module ChicagoLotManagement
             last_name: params['last-name'],
             email: params['email'],
             billing_info: {
-              token_id: params['recurly-token']
+              token_id: params['stripe-token']
             }
           }
       rescue Recurly::Resource::Invalid, Recurly::API::ResponseError => e
@@ -27,7 +27,7 @@ module ChicagoLotManagement
     post '/api/accounts/new' do
       begin
         Recurly::Account.create! account_code: SecureRandom.uuid,
-          billing_info: { token_id: params['recurly-token'] }
+          billing_info: { token_id: params['stripe-token'] }
       rescue Recurly::Resource::Invalid, Recurly::API::ResponseError => e
         puts e
       ensure
@@ -40,7 +40,7 @@ module ChicagoLotManagement
         Recurly::Transaction.create!({
           account: {
             account_code: SecureRandom.uuid,
-            billing_info: { token_id: params['recurly-token'] }
+            billing_info: { token_id: params['stripe-token'] }
           },
           amount_in_cents: 999,
           currency: 'USD'
@@ -55,7 +55,7 @@ module ChicagoLotManagement
     put '/api/accounts/:account_code' do
       begin
         account = Recurly::Account.find params[:account_code]
-        account.billing_info = { token_id: params['recurly-token'] }
+        account.billing_info = { token_id: params['stripe-token'] }
         account.save!
       rescue Recurly::Resource::Invalid, Recurly::API::ResponseError => e
         puts e

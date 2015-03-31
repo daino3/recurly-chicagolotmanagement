@@ -16,12 +16,12 @@ var paypal_error_fields = {
   last_name: 'Last name'
 };
 
-// Configure recurly.js
-recurly.configure('sc-Hw20ERMh8bzGFiWKO7NvDB');
+// Configure stripe.js
+stripe.configure('sc-Hw20ERMh8bzGFiWKO7NvDB');
 
 function create_subscription () {
   var data = {
-    "recurly-token": $('input[name="recurly-token"]').val(),
+    "stripe-token": $('input[name="stripe-token"]').val(),
     "first-name": $('input[name="first-name"]').val(),
     "last-name": $('input[name="last-name"]').val(),
     "email": $('input[name="email"]').val(),
