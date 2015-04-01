@@ -33,54 +33,54 @@ form {
   }
 }
 
- .subscription-details-container {
+.subscription-details-container {
+  float: left;
+  background-color: #FAFAFA;
+  margin: 0 auto;
+  overflow: hidden;
+  width: grid-width(9);
+
+  @include mq($small) {
+    border: 1px solid #D1DBDF;
+  }
+
+  @include mq($large) {
     float: left;
-    background-color: #FAFAFA;
-    margin: 0 auto;
-    overflow: hidden;
     width: grid-width(9);
-
-    @include mq($small) {
-      border: 1px solid #D1DBDF;
-    }
-
-    @include mq($large) {
-      float: left;
-      width: grid-width(9);
-    }
-
-    @include mq($xlarge) {
-      @include border-radius(5px);
-      @include box-shadow(0px 2px 0px #CCCCCC);
-      width: grid-width(9);
-    }
-    @include mq($xxlarge) {
-      width: grid-width(9);
-    }
   }
 
-
-    .order-summary-container {
-
-    width: 100%;
-
-    @include mq($medium) {
-      width: grid-width(5);
-    }
-
-    @include mq($large) {
-      width: grid-width(5);
-    }
-
-    @include mq($xlarge) {
-      width: grid-width(5);
-    }
-
-    @include mq($xxlarge) {
-      float: right;
-      width: grid-width(5);
-    }
+  @include mq($xlarge) {
+    @include border-radius(5px);
+    @include box-shadow(0px 2px 0px #CCCCCC);
+    width: grid-width(9);
   }
+  @include mq($xxlarge) {
+    width: grid-width(9);
+  }
+}
+
+
+  .order-summary-container {
+
+  width: 100%;
+
+  @include mq($medium) {
+    width: grid-width(5);
+  }
+
+  @include mq($large) {
+    width: grid-width(5);
+  }
+
+  @include mq($xlarge) {
+    width: grid-width(5);
+  }
+
+  @include mq($xxlarge) {
+    float: right;
+    width: grid-width(5);
+  }
+}
 
 
 .subscription-name-container {
@@ -115,15 +115,7 @@ form {
       padding-right:5px;
     }
 }
-.addons-container.addons-confirmation {
-    padding-bottom:25px;
-    .addon-item--name {
-      line-height:40px;
-    }
-    .addons-list--item {
-      min-height: 40px;
-      max-height:40px;
-    }
+
+select:disabled {
+    background: #dddddd;
 }
-
-

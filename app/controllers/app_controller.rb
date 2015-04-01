@@ -1,6 +1,12 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
 
+    before do
+      @pricing = Stripe::Plan.all.data.inject({}) do |hash, obj|
+        hash[obj.id] = obj.amount / 100; hash
+      end.to_json
+    end
+
     get '/subscribe-observation' do
       @plan = Stripe::Plan.retrieve("Observation")
       slim :advanced

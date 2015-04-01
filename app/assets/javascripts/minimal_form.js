@@ -16,15 +16,15 @@ $(document).ready(function() {
 
 
   // Identity card type
-  $("#number").on('blur', function(event) {
+  $("#number").on('keyup', function(event) {
     var cardNumber = $("#number").val()
     var cardIsValid = $.payment.validateCardNumber(cardNumber)
 
     if(cardIsValid) {
-      $("#number").removeClass('form-input__error');
+      $(".form-input__number").removeClass('form-input__error');
     }
     else {
-      $("#number").addClass('form-input__error');
+      $(".form-input__number").addClass('form-input__error');
     }
   });
 });

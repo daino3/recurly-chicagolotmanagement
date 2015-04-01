@@ -16,6 +16,11 @@ head
   == css :advanced_desktop
   == js :advanced_form
 
+  javascript:
+    window.StripePricing = {
+      plans : $.parseJSON("#{@pricing}")
+    }
+
 body
 
   form
@@ -63,7 +68,7 @@ body
                   input type="text" data-stripe="year" id="year" name="year" placeholder="YY" maxlength="2" class="form-input__required"
 
               .form-input.customer-fields--card-cvv.form-input__cvv
-                input type="text" data-stripe="cvv" id="cvv" name="cvv" class="form-input__required" placeholder="CVV"
+                input type="text" data-stripe="cvv" id="cvv" name="cvv" class="form-input__required" placeholder="CVV" maxlength="4"
 
             .row.customer-fields--address.form-input__address
               .form-input
@@ -76,9 +81,8 @@ body
             .row
               .form-input.form-input__state
                 .select-wrap
-                  select data-stripe="state" id="state" name="state" class="form-input__required"
-                    option State
-                    == StatesList.to_options
+                  select data-stripe="state" id="state" name="state" class="form-input__required" disabled="true"
+                    option Illinois
 
               .form-input.form-input__postal-code
                 input type="text" data-stripe="postal_code" id="postal_code" name="postal-code" class="form-input__required" placeholder="Zip Code"

@@ -29,7 +29,8 @@ module ChicagoLotManagement
       css :advanced, '/advanced.css', [
         '/css/themes/form-base.css',
         '/css/themes/form-minimal.css',
-        '/css/themes/form-advanced.css'
+        '/css/themes/form-advanced.css',
+        '/css/forms.scss'
       ]
 
       css :advanced_desktop, '/advanced_desktop.css', [

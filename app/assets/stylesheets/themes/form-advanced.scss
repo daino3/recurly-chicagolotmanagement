@@ -19,17 +19,14 @@
   }
 }
 
-.section-title--addons,
-.section-title--billing {
-  color: $blue;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.section-title--addons {
-  margin-top: 32px;
-  margin-bottom: 0px;
-  padding: 0 25px;
+.form-input__error {
+  & label {
+    color: #e35256;
+  }
+  & input {
+    border-color: #e35256;
+    color: #802e31;
+  }
 }
 
 .form-input__state {
@@ -58,99 +55,6 @@
   width: 100%;
 }
 
-
-.addons-container {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #D1DBDF;
-  float: left;
-  margin: 0;
-  width: 100%;
-}
-
-  .addons-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .addons-list--item {
-    border-bottom: 1px solid #EDEDED;
-    display: block;
-    float: left;
-    min-height: 30px;
-    max-height: 70px;
-    margin-top: 4px;
-    width: 100%;
-    padding-bottom: 20px;
-    position: relative;
-    color: #48626C;
-
-    &:first-child {
-      margin-top: 0px;
-    }
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-    .addon-item--name {
-      font-size: 16px;
-      line-height: 66px;
-      display:inline-block;
-    }
-
-    input[type="checkbox"] {
-      vertical-align: middle;
-      margin-right:10px;
-    }
-
-    .addon-item--pricing {
-      @include verticalAlign();
-      right: 0;
-      color: #48626c;
-    }
-
-    .addon-item--quantity-summary {
-        position: absolute;
-        right: 30%;
-        top: 32%;
-    }
-
-      input[data-stripe="addon"] {
-        width: 30px;
-        height: 30px;
-        padding: 0px 10px;
-      }
-
-      .addon-item--price {
-        color: #48626C;
-        display: block;
-        font-size: 14px;
-        float: left;
-        line-height: 32px;
-      }
-
-      .addon-item--quantity {
-        text-align: center;
-        float: right;
-        margin-left: 7px;
-        width: 30px;
-      }
-
-.pay-with-amazon-container {
-  display: inline-block;
-  padding: 25px 0 20px;
-  width: 100%;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0 auto;
-  text-align: center;
-
-  .widget-container {
-    display: inline-block !important;
-  }
-}
 
 form {
   display: block;
@@ -181,238 +85,107 @@ form {
   }
 }
 
-  .subscription-details-container {
-    float: left;
-    background-color: #FAFAFA;
-    margin: 0 auto;
-    overflow: hidden;
-    width: 100%;
+.billing-info-container {
+  background-color: #fafafa;
+  float: left;
+  padding: 20px 0;
+  width:100%;
 
-    @include mq($small) {
-      border: 1px solid #D1DBDF;
-    }
+  .row {
+    padding: 5px 25px;
+  }
+}
 
-    @include mq($large) {
-      float: left;
-      width: grid-width(8);
-    }
+.order-summary-container {
+  background-color: #fafafa;
+  float: right;
+  width: 100%;
 
-    @include mq($xlarge) {
-      @include border-radius(5px);
-      @include box-shadow(0px 2px 0px #CCCCCC);
-      width: grid-width(7);
-    }
-    @include mq($xxlarge) {
-      width: grid-width(7);
-    }
+  @include mq($small) {
+    border: 1px solid #D1DBDF;
   }
 
-    .addons-summary-container .row {
-      border-bottom: 1px dashed #c6cfd2;
-    }
+  @include mq($medium) {
+    width: 100%;
+  }
 
-    .addons-container {
-      background-color: #ffffff;
-      float: left;
-    }
-
-      .addons-list {
-        margin: 0 25px;
-      }
-
-    .billing-info-container {
-      background-color: #fafafa;
-      float: left;
-      padding: 20px 0;
-      width:100%;
-
-      .row {
-        padding: 5px 25px;
-      }
-      .payment-type {
-        border-bottom: 1px solid #c6cfd2;
-        margin-bottom: 20px;
-        padding: 0 30px;
-        float:left;
-        width:100%;
-        a {
-          padding: 10px 10px 0 10px;
-          text-decoration:none;
-          color: #818181;
-        }
-        a.active {
-          color: #48626c;
-          border-bottom: 3px solid #48626c;
-        }
-        #payby-credit-card {
-          float:left;
-        }
-        #payby-paypal {
-          float:right;
-        }
-      }
-    }
-
-  .order-summary-container {
-    background-color: #fafafa;
+  @include mq($large) {
     float: right;
     width: 100%;
-
-    @include mq($small) {
-      border: 1px solid #D1DBDF;
-    }
-
-    @include mq($medium) {
-      width: 100%;
-    }
-
-    @include mq($large) {
-      float: right;
-      width: 100%;
-    }
-
-    @include mq($xlarge) {
-      @include border-radius(5px);
-      @include box-shadow(0px 2px 0px #CCCCCC);
-
-      width: grid-width(5);
-      float: right;
-    }
-
-    @include mq($xxlarge) {
-      float: right;
-      width: grid-width(5);
-    }
   }
 
-    .order-summary-title {
-      background-color: #E2E7E9;
-      float: left;
-      padding: 10px 25px;
-      width: 100%;
-      color:#48626c;
-    }
+  @include mq($xlarge) {
+    @include border-radius(5px);
+    @include box-shadow(0px 2px 0px #CCCCCC);
 
+    width: grid-width(5);
+    float: right;
+  }
 
-  .form-bar {
+  @include mq($xxlarge) {
+    float: right;
+    width: grid-width(5);
+  }
+}
+
+.order-summary-title {
+  background-color: #E2E7E9;
+  float: left;
+  padding: 10px 25px;
+  width: 100%;
+  color:#48626c;
+}
+
+.form-bar {
     padding: 20px;
+    .subscription-pricing {
+      position:static;
+      transform: translateY(0%);
   }
+  select.curr, select.plan, .select-wrap:before, .select-wrap input {
+    background:  $blue;
+    color:#fff;
+    border: 2px solid #fff;
+    font-size:20px;
+    height:44px;
+  }
+  @include mq($large) {
+    select.plan {
+      margin-right:-4px;
+    }
+  }
+  @include mq($xlarge) {
+    select.plan {
+      margin-right:-2px;
+    }
+  }
+}
 
-  .select-wrap:before {
-    // right:1px
-  }
-  .select-wrap:after {
-    top: 8px;
-  }
+.customer-fields--card-details .form-input:nth-child(2) {
+  padding-right:0;
+}
 
-  .form-bar {
-      .subscription-pricing {
-        position:static;
-        transform: translateY(0%);
-    }
-    select.curr, select.plan, .select-wrap:before, .select-wrap input {
-      background:  $blue;
-      color:#fff;
-      border: 2px solid #fff;
-      font-size:20px;
-      height:44px;
-    }
-    @include mq($large) {
-      select.plan {
-        margin-right:-4px;
-      }
-    }
-    @include mq($xlarge) {
-      select.plan {
-        margin-right:-2px;
-      }
-    }
-    .select-wrap.quantity {
-      width: 20%;
-      float:left;
-      margin: 0 10px 0 3px;
-    }
-    .select-wrap.quantity:after {
-      background: url('/images/icons/number-arrow-green.png');
-      top: 8px;
-      width: 19px;
-      height: 28px;
-    }
-    .select-wrap.quantity:before {
+input[type="submit"] {
+  margin: 0 12px 20px;
+  width: 94%;
+}
 
-    }
-    .select-wrap.curr {
-      width: 25%;
-      float:left;
-    }
-    .select-wrap.curr:before {
-      right:2px;
-    }
-    .select-wrap:before {
-      border: 0;
-      height: 42px;
-      right: 5px;
-      top: 1px;
-    }
-    .select-wrap:after {
-      background: url('/images/icons/select-arrow-green.png');
-      top: 15px;
-      right: 10px;
-      width: 19px;
-      height: 12px;
-    }
+.total, .tax {
+  position:relative;
+  padding: 20px;
+  float:right;
+  border-top:2px solid #e2e7e9;
+  width:100%;
+  text-align:right;
+  font-size: 22px;
+  color: #48626c;
+  span.total-amount {
+    display: inline-block;
+    margin-left: 8%;
+    width:22%;
   }
-
-  .customer-fields--card-details .form-input:nth-child(2) {
-    padding-right:0;
-  }
-
- input[type="submit"] {
-    margin: 0 12px 20px;
-    width: 94%;
-  }
- input.paypal-submit, input.paypal-submit:hover {
-      background:url('/images/icons/arrow-down@2x.png') no-repeat;
-      width: 130px;
-      height: 72px;
-      font-size:0;
-      box-shadow:none;
-      display:block;
-      margin: 0px auto;
-  }
-
-  .total, .tax {
-    position:relative;
-    padding: 20px;
-    float:right;
-    border-top:2px solid #e2e7e9;
-    width:100%;
-    text-align:right;
-    font-size: 22px;
-    color: #48626c;
-    span.total-amount {
-      display: inline-block;
-      margin-left: 8%;
-      width:22%;
-    }
-  }
-  .tax {
-    font-size:16px;
-    border-top:0;
-  }
-  .coupon {
-    margin-top: 20px;
-    .coupon-code {
-      display: inline-block;
-      width: 80%;
-    }
-    .coupon-amount-off {
-      display: inline-block;
-      float: right;
-    }
-  }
-  .coupon-text {
-    color: #48626c;
-  }
-
-
+}
+.tax {
+  font-size:16px;
+  border-top:0;
+}
