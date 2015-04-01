@@ -28,17 +28,6 @@
 }
 
 
-@mixin irGraphic($url, $width, $height) {
-  background: {
-    image: url($url);
-    position: center center;
-    repeat: no-repeat;
-    size: $width, $height;
-  };
-  height: $height;
-  width: $width;
-}
-
 @mixin clearfix {
   *zoom: 1;
   &:before,
@@ -88,15 +77,4 @@
   -webkit-box-shadow: $box-shadow;
   -moz-box-shadow: $box-shadow;
   -o-box-shadow: $box-shadow;
-}
-
-@mixin background-image-retina($file, $type, $width, $height) {
-  background-image: url($file + '.' + $type);
-
-  @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
-    & {
-      background-image: url($file + '@2x.' + $type);
-      -webkit-background-size: $width $height;
-    }
-  }
 }

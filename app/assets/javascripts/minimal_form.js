@@ -9,6 +9,8 @@ $(document).ready(function() {
 
     var form = this;
 
+    debugger;
+
     if( $('#subscribe').hasClass('btn-submit') ) {
         // Now we call stripe.token with the form. It goes to Recurly servers
       // to tokenize the credit card information, then injects the token into the

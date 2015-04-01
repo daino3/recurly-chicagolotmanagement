@@ -1,29 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-.form-header {
-  background: url('/images/kalekrate/form-header-bg.png') center no-repeat;
-  height: 167px;
-  position: relative;
-  background-size: cover;
-  @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
-    & {
-      background: url('/images/kalekrate/form-header-bg@2x.png') center no-repeat;
-      background-size: cover;
-    }
-  }
-
-  h1 {
-    @include irGraphic('/images/kalekrate/kalekrate-branding.png', 288px, 61px);
-    @include background-image-retina('/images/kalekrate/kalekrate-branding', 'png', 288px, 61px);
-    @include verticalAlign();
-
-    text-indent: -9999px;
-    margin-top: 0;
-    margin-bottom: 0;
-    width: 100%;
-  }
-}
 
 form {
   padding: 20px 14px 28px 14px;
@@ -45,10 +22,10 @@ form {
 select {
   background:#fff;
 }
-select, input.quantity {
+select {
+    @include border-radius(3px);
     padding:3px;
     margin: 0;
-    @include border-radius(3px);
     color:#818181;
     border:1px solid #c6cfd2;
     outline:none;
@@ -63,17 +40,8 @@ select, input.quantity {
 }
 
 
-/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  select {
-    padding-left: 10px;
-    padding-right: 18px;
-  }
-}
-
 .select-wrap, .quantity-wrap {position:relative}
-.select-wrap:after,
-.quantity-wrap:after {
+.select-wrap:after {
     content: ' ';
     background: url('/images/icons/select-arrow-small@2x.png') center no-repeat;
     right: 20px;
@@ -87,15 +55,7 @@ select, input.quantity {
     height: 6px;
 }
 
-.select-wrap:before, .quantity-wrap:before {
-    content:'';
-    right:3px; top:2px;
-    width:26px; height:37px;
-    position:absolute;
-    pointer-events:none;
-    display:block;
-    background: #fff;
-}
+
 
 .form__success {
   display: none;

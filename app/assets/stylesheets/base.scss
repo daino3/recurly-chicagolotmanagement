@@ -9,33 +9,3 @@
 
   font-family: 'Open Sans', Helvetica, sans-serif;
 }
-
-
-.test {
-  width: 100%;
-  height: 5px;
-
-  @include mq($xsmall) {
-    background-color: yellow;
-  }
-
-  @include mq($small) {
-    background-color: red;
-  }
-
-  @include mq($medium) {
-    background-color: cyan;
-  }
-
-  @include mq($large) {
-    background-color: purple;
-  }
-
-  @include mq($xlarge) {
-    background-color: blue;
-  }
-
-  @include mq($xxlarge) {
-    background-color: green;
-  }
-}
