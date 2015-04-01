@@ -62,8 +62,8 @@ select {
 }
 
 .form-bar {
-  background-color: #91C11E;
-  border-bottom: 1px solid #86B11C;
+  background-color: $blue;
+  border-bottom: 1px solid $lightGray;
   position: relative;
   width: 100%;
   text-align: center;

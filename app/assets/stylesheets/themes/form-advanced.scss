@@ -21,7 +21,7 @@
 
 .section-title--addons,
 .section-title--billing {
-  color: #91C11E;
+  color: $blue;
   font-size: 16px;
   font-weight: 600;
 }
@@ -293,12 +293,7 @@ form {
       color:#48626c;
     }
 
-  .subscription-name-container {
-    width: 100%;
-    padding:0px;
-    float:none;
-    margin-bottom:20px;
-  }
+
   .form-bar {
     padding: 20px;
   }
@@ -316,9 +311,9 @@ form {
         transform: translateY(0%);
     }
     select.curr, select.plan, .select-wrap:before, .select-wrap input {
-      background:  #91C11E;
+      background:  $blue;
       color:#fff;
-      border: 1px solid #fff;
+      border: 2px solid #fff;
       font-size:20px;
       height:44px;
     }
@@ -377,7 +372,7 @@ form {
     width: 94%;
   }
  input.paypal-submit, input.paypal-submit:hover {
-      background:url('/images/icons/paypal-button.jpg') no-repeat;
+      background:url('/images/icons/arrow-down@2x.png') no-repeat;
       width: 130px;
       height: 72px;
       font-size:0;
