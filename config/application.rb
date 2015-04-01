@@ -43,6 +43,8 @@ module ChicagoLotManagement
 
       js :advanced_form, '/advanced_form.js', [
         '/js/common_form.js',
+        '/js/minimal_form.js',
+        '/js/jquery.payment.js'
       ]
 
       serve '/images', from: 'app/assets/images'

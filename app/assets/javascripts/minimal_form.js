@@ -2,69 +2,29 @@ $(document).ready(function() {
   // On form submit, we stop submission to go get the token
   $('form').on('submit', function (event) {
     event.preventDefault();
+    var $form = $(this);
 
     // Disable the submit button
     $('#subscribe').prop('disabled', true);
-    clear_errors();
+    //clear_errors();
 
-    var form = this;
+    Stripe.card.createToken($form, stripeResponseHandler);
 
-    debugger;
-
-    if( $('#subscribe').hasClass('btn-submit') ) {
-        // Now we call stripe.token with the form. It goes to Recurly servers
-      // to tokenize the credit card information, then injects the token into the
-      // data-stripe="token" field above
-      stripe.token(form, function (err, token) {
-        if (err) {
-          error(err);
-        } else {
-          create_subscription();
-        };
-      });
-    }//end if
-
-    else {
-
-      stripe.paypal({ description: 'test' }, function (err, token) {
-        if (err) {
-          console.log(err);
-          // Let's handle any errors using the function below
-          paypalError(err);
-        } else {
-          // set the hidden field above to the token we get back from Recurly
-          $('#stripe-token').val(token.id);
-
-          // Now we submit the form!
-          form.submit();
-        }
-      });
-
-    }
+    // Prevent the form from submitting with the default action
+    return false;
   });
 
 
   // Identity card type
-  $("#number").on('change', function(event) {
-    var card_number = $("#number").val()
-      , card_type = stripe.validate.cardType(card_number)
-      , card_is_valid = stripe.validate.cardNumber($("#number").val())
-      , number_field = $('.customer-fields--card-number .form-input');
+  $("#number").on('blur', function(event) {
+    var cardNumber = $("#number").val()
+    var cardIsValid = $.payment.validateCardNumber(cardNumber)
 
-    if(card_is_valid) {
-      $(number_field).removeClass('form-input__error');
+    if(cardIsValid) {
+      $("#number").removeClass('form-input__error');
     }
     else {
-      $(number_field).addClass('form-input__error');
-    }
-
-    if((card_type == 'default') || (card_type == 'unknown')) {
-      $('.icon-card').addClass('icon-card__generic');
-      $('.icon-card').removeClass('icon-card__visa icon-card__mastercard icon-card__amex icon-card__visa discover');
-    }
-    else {
-      $('.icon-card').removeClass('icon-card__generic');
-      $('.icon-card').addClass('icon-card__' + card_type);
+      $("#number").addClass('form-input__error');
     }
   });
 });

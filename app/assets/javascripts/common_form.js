@@ -11,15 +11,12 @@ var error_fields = {
   address: 'Street address',
   city: 'City'
 };
-var paypal_error_fields = {
-  first_name: 'First name',
-  last_name: 'Last name'
-};
 
 // Configure stripe.js
-stripe.configure('sc-Hw20ERMh8bzGFiWKO7NvDB');
+Stripe.setPublishableKey('pk_test_T1fudZUAy97QWvSz9Fo5b94u');
 
-function create_subscription () {
+function stripeResponseHandler (status, response) {
+  debugger;
   var data = {
     "stripe-token": $('input[name="stripe-token"]').val(),
     "first-name": $('input[name="first-name"]').val(),
@@ -38,12 +35,12 @@ function create_subscription () {
     type: "POST",
     url: '/api/subscriptions/new',
     data: data,
-    success: subscription_created(data),
+    success: subscriptionCreated(data),
     dataType: 'json'
   });
 }
 
-function subscription_created(data) {
+function subscriptionCreated(data) {
   console.log(data);
   $('form').addClass('form__success');
 

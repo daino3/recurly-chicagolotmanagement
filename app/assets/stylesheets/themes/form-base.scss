@@ -43,7 +43,7 @@ select {
 .select-wrap, .quantity-wrap {position:relative}
 .select-wrap:after {
     content: ' ';
-    background: url('/images/icons/select-arrow-small@2x.png') center no-repeat;
+    background: url('/images/icons/arrow-down-gray.png') center no-repeat;
     right: 20px;
     top: 16px;
     padding: 0 0 2px;
@@ -54,8 +54,6 @@ select {
     width: 9px;
     height: 6px;
 }
-
-
 
 .form__success {
   display: none;

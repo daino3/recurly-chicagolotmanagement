@@ -148,15 +148,15 @@ input[type='submit'] {
   width: 100%;
 }
 
-  .form-input__error {
-    & label {
-      color: #e35256;
-    }
-    & input {
-      border-color: #e35256;
-      color: #802e31;
-    }
+.form-input__error {
+  & label {
+    color: #e35256;
   }
+  & input {
+    border-color: #e35256;
+    color: #802e31;
+  }
+}
 
 .icon-card {
   display: block;
