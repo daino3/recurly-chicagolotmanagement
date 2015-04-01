@@ -6,7 +6,6 @@ module ChicagoLotManagement
     helpers  Sinatra::CountryHelpers
 
     set :root, APP_ROOT
-    set :environment, ENV['RACK_ENV'].to_sym
     set :partial_template_engine, :slim
 
     configure do

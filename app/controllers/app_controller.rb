@@ -1,7 +1,18 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
 
-    get '/subscribe' do
+    get '/subscribe-observation' do
+      @plan = Stripe::Plan.retrieve("Observation")
+      slim :advanced
+    end
+
+    get '/subscribe-basic' do
+      @plan = Stripe::Plan.retrieve("Basic")
+      slim :advanced
+    end
+
+    get '/subscribe-premium' do
+      @plan = Stripe::Plan.retrieve("premium")
       slim :advanced
     end
 

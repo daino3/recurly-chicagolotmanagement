@@ -2,3 +2,5 @@
 .DS_Store
 .sass-cache
 .env
+
+/config/stripe_secret.yml

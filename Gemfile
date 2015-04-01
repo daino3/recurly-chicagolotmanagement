@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Framework
 gem 'sinatra', require: 'sinatra/base'
-gem 'sinatra-contrib'
+gem 'sinatra-contrib',require: false
 gem 'sinatra-support'
 gem 'sinatra-partial', require: 'sinatra/partial'
 gem 'slim'
