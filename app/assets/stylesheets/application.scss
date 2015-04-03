@@ -1,0 +1,16 @@
+// utilities
+@import 'variables';
+@import 'mixins';
+@import 'grid';
+// form
+@import 'forms';
+@import 'form-minimal';
+// foundation
+@import 'foundation/settings';
+@import 'foundation/foundation';
+
+* {
+  @include boxsizing();
+
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}

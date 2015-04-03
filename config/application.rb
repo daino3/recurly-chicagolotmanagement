@@ -22,22 +22,7 @@ module ChicagoLotManagement
       serve '/css', from: 'app/assets/stylesheets'
 
       css :application, '/application.css', [
-        '/css/base.css',
-        '/css/forms.css'
-      ]
-
-      css :advanced, '/advanced.css', [
-        '/css/themes/form-base.css',
-        '/css/themes/form-minimal.css',
-        '/css/themes/form-advanced.css',
-        '/css/forms.scss'
-      ]
-
-      css :advanced_desktop, '/advanced_desktop.css', [
-        '/css/themes/form-base.css',
-        '/css/themes/form-minimal.css',
-        '/css/themes/form-advanced.css',
-        '/css/themes/form-advanced-desktop.css'
+        '/css/application.css',
       ]
 
       serve '/js', from: 'app/assets/javascripts'
