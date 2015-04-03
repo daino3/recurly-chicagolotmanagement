@@ -2,22 +2,22 @@
   form
     input type="hidden" data-stripe="currency" id="plan_currency" name="plan-currency" value="USD"
     .large-10.columns
-      .large-9.columns.subscription-details-container
+      .large-10.columns.subscription-details-container
         .row
           .company-logo
             img src="/images/chicago_lot_mgmt.png"
-          .small-12.columns.subscription-name-container
+          .small-10.columns.subscription-name-container
             select data-stripe="plan" id="plan" name="plan" class="plan"
               option value="observation" Observation
               option value="basic" Basic
               option value="premium" Premium
 
-          .small-4.columns.subscription-pricing
+          .small-6.columns.subscription-pricing
             span.subscription-price $20.99
             span.subscription-frequency
-            | /month
+            | /mo
 
-      .large-9.columns.form-body
+      .large-10.columns.form-body
         .section.form-errors.form-errors__hidden
           strong Oops! The following fields appear to be invalid:
           ul
@@ -29,13 +29,19 @@
             h3.large-16.columns.section-title--billing Account Information
 
           .row
-            .large-16.columns.customer-fields--email
+            .large-8.columns
               .form-input.form-input__first-name
                 input type="text" data-stripe="first_name" id="first_name" name="first_name" class="form-input__required" placeholder="First Name"
+            .large-8.columns
               .form-input.form-input__last-name
                 input type="text" data-stripe="last_name" id="last_name" name="last_name" class="form-input__required" placeholder="Last Name"
+          .row
+            .large-8.columns
               .form-input.form-input__email
                 input type="text" data-stripe="email" id="email" name="email" class="form-input__required" placeholder="Email"
+            .large-8.columns
+              .form-input.form-input__company
+                input type="text" data-stripe="company" id="company" name="company" class="form-input__required" placeholder="Company"
 
           .row
             h3.large-16.columns.section-title--billing Property Information
@@ -50,8 +56,8 @@
             .large-16.columns.customer-fields--card-number
               .form-input.form-input__number
                 input type="text" data-stripe="number" id="number" name="number" class="form-input__required" placeholder="4111 1111 1111 1111"
-                span.icon.icon-card.icon-card__generic
-                span.icon.icon-lock
+                span.icon-card
+                span.icon-lock
             .large-16.columns.customer-fields--card-details
               .large-4.columns.form-input.form-input__month.no-padding
                 input type="text" data-stripe="month" id="month" name="month" placeholder="MM" maxlength="2" class="form-input__required"

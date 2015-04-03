@@ -3,12 +3,12 @@ header.order-summary-title
 section.order-summary-details
   .row.order-summary
 
-    div.tax
+    .large-16.columns.tax
       | Tax
       span.total-amount
         span.symbol data-stripe="currency_symbol"
         span data-stripe="tax_now"
-    div.total
+    .large-16.columns.total
       | Total
       span.total-amount
         span data-stripe="currency_symbol"
@@ -23,6 +23,6 @@ section.order-summary-details
             span data-stripe="total_next" name="total-next"
             span  every month.
 
-    .row.hide-form-onsuccess
+    .large-16.columns.hide-form-onsuccess.no-padding
       input type='submit' id="subscribe" class="btn-submit" value="Subscribe"
       input type="hidden" id="stripe-token" name="stripe-token"
