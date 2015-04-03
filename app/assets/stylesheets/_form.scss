@@ -1,3 +1,23 @@
+hr.property-separator {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1.5em;
+  -webkit-margin-start: auto;
+  -webkit-margin-end: auto;
+  border-style: inset;
+  border: 0;
+  border-top: 1px solid silver;
+  border-width: 1px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+ul.properties {
+  list-style: none;
+}
+
 .company-logo {
   img {
     height: 125px;
@@ -187,6 +207,12 @@ input[type='submit'] {
   position: relative;
 }
 
+.section-title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e7e9;
+}
+
 .subscription-price {
   font-size: 18px;
 }
@@ -222,19 +248,21 @@ input[type='submit'] {
   color:#48626c;
 }
 
-.total, .tax {
-  position:relative;
-  padding: 20px;
-  float:right;
+.total, .tax, .pricing, .properties-quantity {
   border-top:2px solid #e2e7e9;
-  width:100%;
-  text-align:right;
-  font-size: 22px;
   color: #48626c;
+  float:right;
+  font-size: 22px;
+  padding: 20px;
+  position:relative;
+  text-align:right;
+  span.total-title {
+    width:70%;
+  }
   span.total-amount {
     display: inline-block;
     margin-left: 8%;
-    width:22%;
+    width:30%;
   }
 }
 

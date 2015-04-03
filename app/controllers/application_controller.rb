@@ -1,6 +1,15 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
 
+    before "*" do
+      @plans = Stripe::Plan.all.each_with_index.map{ |plan, index| [plan.id, index + 1] }
+    end
+
+    get '/add-property' do
+      @property_count = params[:count].to_i
+      slim :'/_property', layout: false
+    end
+
     get '/plan-data' do
       content_type :json
 

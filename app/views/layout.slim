@@ -17,7 +17,8 @@ head
 
   javascript:
     $.get('/plan-data', function(response) {
-      window.PlanPricing = response
+      window.StripePricing = response
+      window.currentPlan = "#{@plan.id}"
     })
 
 body

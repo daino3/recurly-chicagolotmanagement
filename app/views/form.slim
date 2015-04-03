@@ -8,12 +8,12 @@
             img src="/images/chicago_lot_mgmt.png"
           .small-10.columns.subscription-name-container
             select data-stripe="plan" id="plan" name="plan" class="plan"
-              option value="observation" Observation
-              option value="basic" Basic
-              option value="premium" Premium
+              == select_options(@plans, Hash[@plans][@plan.id])
 
           .small-6.columns.subscription-pricing
-            span.subscription-price $20.99
+            span.subscription-price
+              span $
+              span role="subscription-price" == @plan.amount / 100
             span.subscription-frequency
             | /mo
 
@@ -26,7 +26,7 @@
 
         section.billing-info-container.hide-form-onsuccess
           .row
-            h3.large-16.columns.section-title--billing Account Information
+            h3.large-16.columns.section-title Account Information
 
           .row
             .large-8.columns
@@ -44,14 +44,17 @@
                 input type="text" data-stripe="company" id="company" name="company" class="form-input__required" placeholder="Company"
 
           .row
-            h3.large-16.columns.section-title--billing Property Information
+            h3.large-16.columns.section-title Property Information
 
           .row
-            .large-16.columns.customer-fields--properties
+            ul.large-16.columns.properties
               == partial(:"_property")
+            .large-16.columns
+              .button role='add-property' Add
+              .button.alert.hidden role='remove-property' Remove
 
           .row
-            h3.large-16.columns.section-title--billing Billing Information
+            h3.large-16.columns.section-title Billing Information
           .row
             .large-16.columns.customer-fields--card-number
               .form-input.form-input__number

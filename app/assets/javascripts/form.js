@@ -96,6 +96,17 @@ $(document).ready(function() {
     return false;
   });
 
+  $("select.plan").change(function() {
+    var index = $(this).val();
+    var newPlan = $("option[value="+index+"]").text();
+    window.currentPlan = newPlan;
+
+    var pricing = window.StripePricing[newPlan];
+    $("[role='subscription-price']").html(pricing);
+    $("[role='plan-pricing']").html(pricing);
+    var quant = $("[role='quantity']").text();
+    $("[role='grand-total']").html(parseInt(quant) * parseInt(pricing));
+  })
 
   // Identity card type
   $("#number").on('keyup', function(event) {
@@ -110,3 +121,33 @@ $(document).ready(function() {
     }
   });
 });
+
+$(document).on('click', "[role='add-property']", function(){
+  $list = $('ul.properties');
+  var properties = $('.properties').length;
+  var data = {"count": properties};
+  $.get('add-property', data, function(data) {
+    $list.append(data);
+
+    if ($list.children().length > 1) {
+      $("[role='remove-property']").removeClass('hidden');
+    } else {
+      $("[role='remove-property']").addClass('hidden');
+    }
+
+    $("[role='quantity']").text($('.property').length);
+  });
+})
+
+$(document).on('click', "[role='remove-property']", function(){
+  $list = $('ul.properties');
+
+  $(".property-separator").last().remove();
+  $(".property").last().remove();
+
+  if ($list.children().length <= 1) {
+    $("[role='remove-property']").addClass('hidden');
+  }
+
+  $("[role='quantity']").text($(".property").length);
+})

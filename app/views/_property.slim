@@ -1,16 +1,20 @@
-.row
-  .large-16.columns.customer-fields--address.form-input__address
-    .form-input
-      input type="text" data-stripe="address" id="address" name="address" class="form-input__required" placeholder="Address"
+- if @property_count.to_i >= 1
+  hr.property-separator
 
-.row
-  .large-16.columns
-    .large-8.columns.form-input.form-input__city.no-padding
-      input type="text" data-stripe="city" id="city" name="city" class="form-input__required" value="Chicago" disabled="true"
+li.property
+  .row
+    .large-16.columns.customer-fields--address.form-input__address
+      .form-input
+        input type="text" data-stripe="address" id="address" name="address" class="form-input__required" placeholder="Address"
 
-    .large-8.columns.select-wrap.no-padding
-      select data-stripe="state" id="state" name="state" class="form-input__required" disabled="true"
-        option Illinois
+  .row
+    .large-16.columns
+      .large-8.columns.form-input.form-input__city.no-padding
+        input type="text" data-stripe="city" id="city" name="city" class="form-input__required" value="Chicago" disabled="true"
 
-  .large-16.columns.form-input.form-input__postal-code
-    input type="text" data-stripe="postal_code" id="postal_code" name="postal-code" class="form-input__required" placeholder="Zip Code"
+      .large-8.columns.select-wrap.no-padding
+        select data-stripe="state" id="state" name="state" class="form-input__required" disabled="true"
+          option Illinois
+
+    .large-16.columns.form-input.form-input__postal-code
+      input type="text" data-stripe="postal_code" id="postal_code" name="postal-code" class="form-input__required" placeholder="Zip Code"
