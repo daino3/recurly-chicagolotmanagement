@@ -5,6 +5,10 @@ module ChicagoLotManagement
       @plans = Stripe::Plan.all.each_with_index.map{ |plan, index| [plan.id, index + 1] }
     end
 
+    get '/' do
+      slim :index, layout: true
+    end
+
     get '/add-property' do
       @property_count = params[:count].to_i
       slim :'/_property', layout: false

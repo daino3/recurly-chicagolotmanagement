@@ -8,7 +8,7 @@ module ChicagoLotManagement
     set :partial_template_engine, :slim
 
     configure do
-      set :port, 9001
+      set :port, 3000
       set :public_folder, './public'
       set :views, Proc.new { File.join(root, 'app', 'views') }
       set :slim, pretty: true

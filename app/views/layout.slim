@@ -18,7 +18,7 @@ head
   javascript:
     $.get('/plan-data', function(response) {
       window.StripePricing = response
-      window.currentPlan = "#{@plan.id}"
+      window.currentPlan = "#{@plan.id if @plan}"
     })
 
 body
