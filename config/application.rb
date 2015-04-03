@@ -2,7 +2,7 @@ module ChicagoLotManagement
   class App < Sinatra::Base
     register Sinatra::AssetPack
     register Sinatra::Partial
-    helpers  Sinatra::HtmlHelpers
+    helpers  Sinatra::HtmlHelpers # http://www.rubydoc.info/gems/sinatra-support/1.2.2/Sinatra/HtmlHelpers
 
     set :root, APP_ROOT
     set :partial_template_engine, :slim
@@ -17,21 +17,20 @@ module ChicagoLotManagement
     Sass.load_paths << File.join(root, 'app', 'assets', 'stylesheets')
 
     assets {
-
       serve '/css', from: 'app/assets/stylesheets'
+      serve '/js', from: 'app/assets/javascripts'
+      serve '/images', from: 'app/assets/images'
 
       css :application, '/application.css', [
         '/css/application.css',
       ]
 
-      serve '/js', from: 'app/assets/javascripts'
-
       js :application, '/application.js', [
+        '/js/underscore.js',
         '/js/jquery.payment.js',
         '/js/form.js'
       ]
 
-      serve '/images', from: 'app/assets/images'
     }
   end
 end

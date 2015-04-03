@@ -13,13 +13,12 @@ head
   == partial(:'shared/meta')
   == partial(:'shared/scripts')
   == css :application
+  == js :application
 
-  - binding.pry
   javascript:
-    debugger
-    window.StripePricing = {
-      plans : $.parseJSON("#{html_safe(@pricing)}")
-    }
+    $.get('/plan-data', function(response) {
+      window.PlanPricing = response
+    })
 
 body
   == yield
