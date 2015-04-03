@@ -1,6 +1,16 @@
-.form-input.form-input__first-name
-  input type="text" data-stripe="first_name" id="first_name" name="first_name" class="form-input__required" placeholder="First Name"
-.form-input.form-input__last-name
-  input type="text" data-stripe="last_name" id="last_name" name="last_name" class="form-input__required" placeholder="Last Name"
-.form-input.form-input__email
-  input type="text" data-stripe="email" id="email" name="email" class="form-input__required" placeholder="Email"
+.row
+  .large-16.columns.customer-fields--address.form-input__address
+    .form-input
+      input type="text" data-stripe="address" id="address" name="address" class="form-input__required" placeholder="Address"
+
+.row
+  .large-16.columns
+    .large-8.columns.form-input.form-input__city.no-padding
+      input type="text" data-stripe="city" id="city" name="city" class="form-input__required" value="Chicago" disabled="true"
+
+    .large-8.columns.select-wrap.no-padding
+      select data-stripe="state" id="state" name="state" class="form-input__required" disabled="true"
+        option Illinois
+
+  .large-16.columns.form-input.form-input__postal-code
+    input type="text" data-stripe="postal_code" id="postal_code" name="postal-code" class="form-input__required" placeholder="Zip Code"

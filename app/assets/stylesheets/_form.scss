@@ -5,6 +5,18 @@
   }
 }
 
+.stripe-logo {
+  text-align: center;
+  img {
+    height: 30px;
+  }
+}
+
+.no-padding {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 input[type='submit'] {
   @include box-shadow(0 3px 0 #EB9909);
   @include border-radius(3px);
