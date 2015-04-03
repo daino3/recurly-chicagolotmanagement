@@ -9,17 +9,17 @@ module ChicagoLotManagement
 
     get '/subscribe-observation' do
       @plan = Stripe::Plan.retrieve("Observation")
-      slim :advanced
+      slim :form, layout: true
     end
 
     get '/subscribe-basic' do
       @plan = Stripe::Plan.retrieve("Basic")
-      slim :advanced
+      slim :form, layout: true
     end
 
     get '/subscribe-premium' do
       @plan = Stripe::Plan.retrieve("premium")
-      slim :advanced
+      slim :form, layout: true
     end
 
     post '/api/subscriptions/new' do

@@ -1,21 +1,3 @@
-@mixin boxsizing {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-@function toRem($dim, $base: 16) {
-  @return $dim / $base * 1rem;
-}
-
-@mixin mq($size) {
-  $width: toRem($size);
-  @media screen and (min-width: #{$width}) {
-    @content;
-  }
-}
 
 @mixin verticalAlign($pos: absolute) {
   position: $pos;
@@ -27,48 +9,11 @@
   transform: translateY(-50%);
 }
 
-@mixin clearfix {
-  *zoom: 1;
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-  }
-  &:after {
-    clear: both;
-  }
-}
-
 @mixin border-radius($border-radius) {
   border-radius: $border-radius;
   -webkit-border-radius: $border-radius;
   -moz-border-radius: $border-radius;
   -o-border-radius: $border-radius;
-}
-
-@mixin border-top-left-radius($border-radius) {
-  -webkit-border-top-left-radius: $border-radius;
-  -moz-border-radius-topleft: $border-radius;
-  border-top-left-radius: $border-radius;
-}
-
-@mixin border-top-right-radius($border-radius) {
-  -webkit-border-top-right-radius: $border-radius;
-  -moz-border-radius-topright: $border-radius;
-  border-top-right-radius: $border-radius;
-}
-
-@mixin border-bottom-left-radius($border-radius) {
-  -webkit-border-bottom-left-radius: $border-radius;
-  -moz-border-radius-bottomleft: $border-radius;
-  border-bottom-left-radius: $border-radius;
-}
-
-@mixin border-bottom-right-radius($border-radius) {
-  -webkit-border-bottom-right-radius: $border-radius;
-  -moz-border-radius-bottomright: $border-radius;
-  border-bottom-right-radius: $border-radius;
 }
 
 @mixin box-shadow($box-shadow) {

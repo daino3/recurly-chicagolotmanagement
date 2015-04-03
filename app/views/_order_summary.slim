@@ -1,0 +1,28 @@
+header.order-summary-title
+  h2 Order Summary
+section.order-summary-details
+  .row.order-summary
+
+    div.tax
+      | Tax
+      span.total-amount
+        span.symbol data-stripe="currency_symbol"
+        span data-stripe="tax_now"
+    div.total
+      | Total
+      span.total-amount
+        span data-stripe="currency_symbol"
+        span data-stripe="total_now" id="total_now" name="total-now" class="order-summary--total"
+
+      .confirmation
+        .confirmation-body
+          h2.confirmation-messaging
+            span Thank you for subscribing.
+            br You will be billed
+            span data-stripe="currency_symbol"
+            span data-stripe="total_next" name="total-next"
+            span  every month.
+
+    .row.hide-form-onsuccess
+      input type='submit' id="subscribe" class="btn-submit" value="Subscribe"
+      input type="hidden" id="stripe-token" name="stripe-token"
