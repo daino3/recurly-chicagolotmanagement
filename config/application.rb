@@ -3,7 +3,6 @@ module ChicagoLotManagement
     register Sinatra::AssetPack
     register Sinatra::Partial
     helpers  Sinatra::HtmlHelpers
-    helpers  Sinatra::CountryHelpers
 
     set :root, APP_ROOT
     set :partial_template_engine, :slim
@@ -27,10 +26,9 @@ module ChicagoLotManagement
 
       serve '/js', from: 'app/assets/javascripts'
 
-      js :advanced_form, '/advanced_form.js', [
-        '/js/common_form.js',
-        '/js/minimal_form.js',
-        '/js/jquery.payment.js'
+      js :application, '/application.js', [
+        '/js/jquery.payment.js',
+        '/js/form.js'
       ]
 
       serve '/images', from: 'app/assets/images'

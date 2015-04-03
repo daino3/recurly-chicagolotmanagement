@@ -4,7 +4,7 @@ module ChicagoLotManagement
     before do
       @pricing = Stripe::Plan.all.data.inject({}) do |hash, obj|
         hash[obj.id] = obj.amount / 100; hash
-      end.to_json
+      end
     end
 
     get '/subscribe-observation' do

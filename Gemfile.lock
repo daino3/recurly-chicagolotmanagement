@@ -121,7 +121,6 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
-  activesupport
   capybara
   hashie
   pg

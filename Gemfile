@@ -20,7 +20,6 @@ gem 'thin'
 # Database
 gem 'pg'
 gem 'activerecord'
-gem 'activesupport'
 
 group :development, :test do
   gem 'pry'

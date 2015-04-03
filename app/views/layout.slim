@@ -14,9 +14,11 @@ head
   == partial(:'shared/scripts')
   == css :application
 
+  - binding.pry
   javascript:
+    debugger
     window.StripePricing = {
-      plans : $.parseJSON("#{@pricing}")
+      plans : $.parseJSON("#{html_safe(@pricing)}")
     }
 
 body

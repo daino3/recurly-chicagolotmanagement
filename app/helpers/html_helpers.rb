@@ -24,6 +24,10 @@ module HtmlHelpers
     Rack::Utils.escape_html(str)
   end
 
+  def html_safe(str)
+    Rack::Utils.unescape(str)
+  end
+
   # Accepts a list of pairs and produces option tags.
   #
   # @example
