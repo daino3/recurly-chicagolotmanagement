@@ -104,8 +104,7 @@ $(document).ready(function() {
     var pricing = window.StripePricing[newPlan];
     $("[role='subscription-price']").html(pricing);
     $("[role='plan-pricing']").html(pricing);
-    var quant = $("[role='quantity']").text();
-    $("[role='grand-total']").html(parseInt(quant) * parseInt(pricing));
+    updateGrandTotal();
   })
 
   // Identity card type
@@ -136,6 +135,7 @@ $(document).on('click', "[role='add-property']", function(){
     }
 
     $("[role='quantity']").text($('.property').length);
+    updateGrandTotal();
   });
 })
 
@@ -150,4 +150,11 @@ $(document).on('click', "[role='remove-property']", function(){
   }
 
   $("[role='quantity']").text($(".property").length);
+  updateGrandTotal();
 })
+
+function updateGrandTotal () {
+  var pricing = $("[role='plan-pricing']").text();
+  var quant = $("[role='quantity']").text();
+  $("[role='grand-total']").html(parseInt(quant) * parseInt(pricing));
+}
