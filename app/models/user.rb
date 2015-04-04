@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
       :email => email,
       :description => stripe_description,
       :card => stripe_token,
-      :meta_data => properties.all.map(&:attributes)
+      :metadata => properties.all.map(&:attributes)
     )
 
     self.update_attribute(:stripe_id, customer.id)
