@@ -41,12 +41,10 @@ function stripeResponseHandler (status, response) {
 }
 
 function subscriptionCreated(data) {
-  console.log(data);
   $('form').addClass('form__success');
 
   $('.confirmation').addClass('confirmation__show');
   $('.confirmation-messaging').addClass('animate');
-  $('[role="form-errors"]').addClass("form-errors__hidden")
 }
 
 // A simple error handling function to expose errors to the customer

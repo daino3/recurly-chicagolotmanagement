@@ -133,13 +133,13 @@ input[type='submit'] {
   background: url('/images/success_mark.png') top center no-repeat;
   color: #48626C;
   font-size: 18px;
-  padding-top: 135px;
   font-weight: 600;
-  width: 100%;
+  margin: 0;
+  opacity: 0;
+  padding-top: 135px;
   text-align: center;
   top: 55%;
-  opacity: 0;
-  margin: 0;
+  width: 100%;
 }
 
 .confirmation__show {

@@ -21,14 +21,5 @@ section.order-summary-details
         span data-stripe="currency_symbol" $
         span role="grand-total" data-stripe="total_now" id="total_now" name="total-now" class="order-summary--total" == @plan.amount / 100
 
-      .confirmation
-        .confirmation-body
-          h2.confirmation-messaging
-            span Thank you for subscribing.
-            br You will be billed
-            span data-stripe="currency_symbol"
-            span data-stripe="total_next" name="total-next"
-            span  every month.
-
     .large-16.columns.hide-form-onsuccess.no-padding
       input type='submit' id="subscribe" class="btn-submit" value="Subscribe"
