@@ -1,3 +1,0 @@
-stripe_success_response:
-  HEADER: 'hello'
-  status: 200

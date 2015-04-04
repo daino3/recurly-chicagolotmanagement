@@ -13,7 +13,5 @@ new_user:
       city: 'Chicago'
       zip_code: '60617'
       nickname: 'home'
-  card_number: '4111-1111-1111-1111'
-  month: 8
-  year: 2018
+  valid_card_number: '4242424242424242'
   cvv: 1234

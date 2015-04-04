@@ -5,32 +5,32 @@ gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib',require: false
 gem 'sinatra-support'
 gem 'sinatra-partial', require: 'sinatra/partial'
-gem 'slim'
+gem 'sinatra-assetpack'
 
 # Assets
 gem 'sass'
-gem 'sinatra-assetpack'
+gem 'slim'
 
 # Misc
+gem 'hashie'
 gem 'rake'
 gem 'stripe'
-gem 'hashie'
 gem 'thin'
 
 # Database
-gem 'pg'
 gem 'activerecord'
+gem 'pg'
 
 group :development, :test do
   gem 'pry'
 end
 
 group :test do
-  gem 'sqlite3'
-  gem 'rspec'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'rack-test'
+  gem 'rspec'
+  gem 'sqlite3'
 end
-
 
 ruby '2.1.2'

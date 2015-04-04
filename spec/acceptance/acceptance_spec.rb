@@ -3,15 +3,27 @@ require 'spec_helper'
 describe 'route' do
   include FormHelper
 
-  context 'observation package' do
+  xcontext 'observation package' do
     it 'creates a user' do
       expect{
-        complete_form '/observation', multiple_properties: false
+        complete_form '/subscribe-observation'
       }.to change(User, :count).by(1)
     end
+  end
 
-    it 'sends an application to stripe\'s api' do
-      1 == 1
+  xcontext 'basic package' do
+    it 'creates a user' do
+      expect{
+        complete_form '/subscribe-basic'
+      }.to change(User, :count).by(1)
+    end
+  end
+
+  xcontext 'premium package' do
+    it 'creates a user' do
+      expect{
+        complete_form '/subscribe-premium'
+      }.to change(User, :count).by(1)
     end
   end
 end

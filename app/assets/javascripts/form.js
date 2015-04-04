@@ -29,7 +29,7 @@ function stripeResponseHandler (status, response) {
   if (status == "200"){
     $.ajax({
       type: "POST",
-      url: '/api/subscriptions/new',
+      url: '/subscriptions/create',
       data: data,
       success: subscriptionCreated(data),
       dataType: 'json'
