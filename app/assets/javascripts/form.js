@@ -18,7 +18,7 @@ Stripe.setPublishableKey('pk_test_T1fudZUAy97QWvSz9Fo5b94u');
 function stripeResponseHandler (status, response) {
 
   var formData = JSON.parse(JSON.stringify($('form').serializeArray()))
-  var stripeAccount = {'name': "account[][stripe_id]", 'value': response.id}
+  var stripeAccount = {'name': "account[][stripe_token]", 'value': response.id}
   var stripePlan = {'name': "subscription_id", 'value': $("#plan option:selected").text()}
   var data = formData.concat(stripeAccount, stripePlan)
 
@@ -132,7 +132,7 @@ $(document).on('click', "[role='remove-property']", function(){
     $("[role='remove-property']").addClass('hidden');
   }
 
-  $("[role='quantity']").text($(".property").length);
+  $("[role='quantity']").text($('.property').length);
   updateGrandTotal();
 })
 
