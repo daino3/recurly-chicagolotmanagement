@@ -1,5 +1,4 @@
 require 'rake'
-require 'pry'
 require_relative './config/environment'
 require 'active_support/core_ext'
 
