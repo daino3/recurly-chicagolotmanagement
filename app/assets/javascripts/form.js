@@ -16,28 +16,28 @@ var error_fields = {
 Stripe.setPublishableKey('pk_test_T1fudZUAy97QWvSz9Fo5b94u');
 
 function stripeResponseHandler (status, response) {
-  debugger;
-  var data = {
-    "stripe-token": $('input[name="stripe-token"]').val(),
-    "first-name": $('input[name="first-name"]').val(),
-    "last-name": $('input[name="last-name"]').val(),
-    "email": $('input[name="email"]').val(),
-    "address" : $('input[name="address"]').val(),
-    "city" : $('input[name="city"]').val(),
-    "state" : $('#state').val(),
-    "zip": $('input[name="postal-code"]').val(),
-    "number": $('input[name="number"]').val(),
-    "month": $('input[name="month"]').val(),
-    "year": $('input[name="year"]').val()
-  };
 
-  $.ajax({
-    type: "POST",
-    url: '/api/subscriptions/new',
-    data: data,
-    success: subscriptionCreated(data),
-    dataType: 'json'
-  });
+  var formData = JSON.parse(JSON.stringify($('form').serializeArray()))
+  var stripeAccount = {'name': "account[][stripe_id]", 'value': response.id}
+  var stripePlan = {'name': "subscription_id", 'value': $("#plan option:selected").text()}
+  var data = formData.concat(stripeAccount, stripePlan)
+
+  // valid test data
+  // valid card ='4242424242424242'
+  // valid cvv =
+
+  if (status == "200"){
+    $.ajax({
+      type: "POST",
+      url: '/api/subscriptions/new',
+      data: data,
+      success: subscriptionCreated(data),
+      dataType: 'json'
+    });
+  } else {
+    renderErrors(response);
+  }
+  return false
 }
 
 function subscriptionCreated(data) {
@@ -46,35 +46,19 @@ function subscriptionCreated(data) {
 
   $('.confirmation').addClass('confirmation__show');
   $('.confirmation-messaging').addClass('animate');
-}
-
-function clear_errors() {
-  invalid_fields = {};
-  $('.form-errors--invalid-field').removeClass('form-errors--invalid-field');
+  $('[role="form-errors"]').addClass("form-errors__hidden")
 }
 
 // A simple error handling function to expose errors to the customer
-function error (err) {
+function renderErrors (response) {
+  var message = response.error.message
+  var errors_markup = '<li class="form-errors--invalid-field">' + message + '</li>';
 
-  if (err.niceMessage) {
-    errors_markup = '<li class="form-errors--invalid-field">' + err.niceMessage + '</li>';
-  } else {
-    $.each(err.fields, function(i, field) {
-      if(typeof invalid_fields[field] === 'undefined') {
-        invalid_fields[field] = field;
-      }
-    });
-
-    var errors_markup = $.map(invalid_fields, function (field) {
-      $('.form-input__' + field).addClass('form-input__error');
-      return '<li class="form-errors--invalid-field">' + error_fields[field] || field + '</li>';
-    }).join('');
-  }
-
-  $('.form-errors').removeClass('form-errors__hidden');
   $('.form-errors ul')
     .empty()
     .append(errors_markup);
+
+  $('[role="form-errors"]').removeClass("form-errors__hidden")
 
   $('input[type="submit"]').prop('disabled', false);
 }
@@ -88,7 +72,6 @@ $(document).ready(function() {
 
     // Disable the submit button
     $('#subscribe').prop('disabled', true);
-    //clear_errors();
 
     Stripe.card.createToken($form, stripeResponseHandler);
 
@@ -108,7 +91,7 @@ $(document).ready(function() {
   })
 
   // Identity card type
-  $("#number").on('keyup', function(event) {
+  $("#number").on('blur', function(event) {
     var cardNumber = $("#number").val()
     var cardIsValid = $.payment.validateCardNumber(cardNumber)
 

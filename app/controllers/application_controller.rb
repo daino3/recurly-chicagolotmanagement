@@ -1,6 +1,31 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
 
+    helpers do
+      def authorized?
+        @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+        @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ["username","password"]
+      end
+
+      def protected!
+        unless authorized?
+          response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+          throw(:halt, [401, "Oops... we need your login name & password\n"])
+        end
+      end
+    end
+
+    get '/admin' do
+      protected!
+      @properties = Property.includes(:user).order("users.email ASC", "properties.subscription_id ASC")
+      slim :admin, layout: true
+    end
+
+    delete '/property/:id' do
+      property = Property.find(params[:id])
+      Property.find(params[:id]).destroy
+    end
+
     before "*" do
       @plans = Stripe::Plan.all.each_with_index.map{ |plan, index| [plan.id, index + 1] }
     end
@@ -39,18 +64,16 @@ module ChicagoLotManagement
 
     post '/api/subscriptions/new' do
       begin
-        subscription = Recurly::Subscription.create plan_code: 'kale-fan',
-          account: {
-            account_code: SecureRandom.uuid,
-            first_name: params['first-name'],
-            last_name: params['last-name'],
-            email: params['email'],
-            billing_info: {
-              token_id: params['stripe-token']
-            }
-          }
-      rescue Recurly::Resource::Invalid, Recurly::API::ResponseError => e
-        puts e
+        account = params[:account].first
+        user = User.find_or_create_by(email: account.delete(:email) )
+        user.update_attributes(account)
+
+        params[:properties].each do |property|
+          binding.pry
+          Property.create(property.merge(user: user))
+        end
+      rescue  ActiveRecord::Error => e
+        puts e.message
       ensure
         redirect back
       end

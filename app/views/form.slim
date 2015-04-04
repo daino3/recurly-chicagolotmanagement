@@ -1,6 +1,5 @@
 .large-16.columns
   form
-    input type="hidden" data-stripe="currency" id="plan_currency" name="plan-currency" value="USD"
     .large-10.columns
       .large-10.columns.subscription-details-container
         .row
@@ -18,7 +17,7 @@
             | /mo
 
       .large-10.columns.form-body
-        .section.form-errors.form-errors__hidden
+        .section.form-errors.form-errors__hidden role="form-errors"
           strong Oops! The following fields appear to be invalid:
           ul
 
@@ -31,17 +30,17 @@
           .row
             .large-8.columns
               .form-input.form-input__first-name
-                input type="text" data-stripe="first_name" id="first_name" name="first_name" class="form-input__required" placeholder="First Name"
+                input type="text" data-stripe="first_name" id="first_name" name="account[][first_name]" class="form-input__required" placeholder="First Name" required=""
             .large-8.columns
               .form-input.form-input__last-name
-                input type="text" data-stripe="last_name" id="last_name" name="last_name" class="form-input__required" placeholder="Last Name"
+                input type="text" data-stripe="last_name" id="last_name" name="account[][last_name]" class="form-input__required" placeholder="Last Name" required=""
           .row
             .large-8.columns
               .form-input.form-input__email
-                input type="text" data-stripe="email" id="email" name="email" class="form-input__required" placeholder="Email"
+                input type="text" id="email" name="account[][email]" class="form-input__required" placeholder="Email" required=""
             .large-8.columns
               .form-input.form-input__company
-                input type="text" data-stripe="company" id="company" name="company" class="form-input__required" placeholder="Company"
+                input type="text" id="company" name="account[][company]" class="form-input__required" placeholder="Company (optional)"
 
           .row
             h3.large-16.columns.section-title Property Information
@@ -58,16 +57,16 @@
           .row
             .large-16.columns.customer-fields--card-number
               .form-input.form-input__number
-                input type="text" data-stripe="number" id="number" name="number" class="form-input__required" placeholder="4111 1111 1111 1111"
+                input type="text" data-stripe="number" id="number" class="form-input__required" placeholder="4111 1111 1111 1111" required=""
                 span.icon-card
                 span.icon-lock
             .large-16.columns.customer-fields--card-details
               .large-4.columns.form-input.form-input__month.no-padding
-                input type="text" data-stripe="month" id="month" name="month" placeholder="MM" maxlength="2" class="form-input__required"
+                input type="text" data-stripe="exp_month" id="month" placeholder="MM" maxlength="2" class="form-input__required" required=""
               .large-4.columns.form-input.form-input__year.no-padding
-                input type="text" data-stripe="year" id="year" name="year" placeholder="YY" maxlength="2" class="form-input__required"
+                input type="text" data-stripe="exp_year" id="year" placeholder="YY" maxlength="2" class="form-input__required" required=""
               .large-4.columns.form-input.form-input__cvv.no-padding
-                input type="text" data-stripe="cvv" id="cvv" name="cvv" class="form-input__required" placeholder="CVV" maxlength="4"
+                input type="text" data-stripe="cvv" id="cvv" class="form-input__required" placeholder="CVV" maxlength="4" required=""
 
           section
             .large-16.columns.large-centered.stripe-logo

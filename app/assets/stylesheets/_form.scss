@@ -300,10 +300,10 @@ input[type='submit'] {
 
 .form-input__error {
   & label {
-    color: #e35256;
+    color: #e35256 !important;
   }
   & input {
-    border-color: #e35256;
-    color: #802e31;
+    border-color: #e35256 !important;
+    color: #802e31 !important;
   }
 }

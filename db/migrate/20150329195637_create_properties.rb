@@ -3,10 +3,10 @@ class CreateProperties < ActiveRecord::Migration
     create_table :properties do |t|
       t.belongs_to :user
       t.string :address
-      t.string :city
-      t.string :nickname
+      t.string :city, default: "Chicago"
+      t.string :state, default: "Illinois"
       t.string :zip_code
-      t.string :plan
+      t.string :subscription_id
     end
   end
 end
