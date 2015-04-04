@@ -8,9 +8,10 @@ Couple niceties:
 + Slim templating engine
 + Stripe integration w/ quantity-based subscription
 + Rspec
-+ WIP: [Google Places Form Autocomplete, Coffeescript, Backbone?]
++ WIP: [Google Places Form Autocomplete, Coffeescript, Backbone?, Admin?]
 
-### Running Server (defaults to 3000 in config.ru)
+### Running Server 
+Default set to 3000 in config.ru
 
 ```
 bundle exec rackup
