@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
     self.update_attribute(:stripe_id, customer.id)
 
-    customer.update_subscription({:plan => plan, quantity: quantity})
+    customer.create_subscription({:plan => plan, quantity: quantity})
   end
 
 

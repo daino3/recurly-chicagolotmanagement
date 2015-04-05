@@ -1,25 +1,10 @@
-var invalid_fields = {};
-var error_fields = {
-  first_name: 'First name',
-  last_name: 'Last name',
-  email: 'Email address',
-  number: 'Credit Card number',
-  postal_code: 'Postal Code',
-  month: 'Expiration Month',
-  year: 'Expiration Year',
-  cvv: 'CVV',
-  address: 'Street address',
-  city: 'City'
-};
 
-// Configure stripe.js
-Stripe.setPublishableKey('pk_test_T1fudZUAy97QWvSz9Fo5b94u');
 
 function stripeResponseHandler (status, response) {
 
-  var formData = JSON.parse(JSON.stringify($('form').serializeArray()))
+  var formData = JSON.parse(JSON.stringify($('#subscription-form').serializeArray()))
   var stripeAccount = {'name': "account[][stripe_token]", 'value': response.id}
-  var stripePlan = {'name': "subscription_id", 'value': $("#plan option:selected").text()}
+  var stripePlan = {'name': "subscription_type", 'value': $("#plan option:selected").text()}
   var data = formData.concat(stripeAccount, stripePlan)
 
   // valid test data
@@ -41,7 +26,7 @@ function stripeResponseHandler (status, response) {
 }
 
 function subscriptionCreated(data) {
-  $('form').addClass('form__success');
+  $('#subscription-form').addClass('form__success');
 
   $('.confirmation').addClass('confirmation__show');
   $('.confirmation-messaging').addClass('animate');
@@ -64,7 +49,7 @@ function renderErrors (response) {
 
 $(document).ready(function() {
   // On form submit, we stop submission to go get the token
-  $('form').on('submit', function (event) {
+  $('#subscription-form').on('submit', function (event) {
     event.preventDefault();
     var $form = $(this);
 

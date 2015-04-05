@@ -4,7 +4,7 @@ module ChicagoLotManagement
     helpers do
       def authorized?
         @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-        @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ["username","password"]
+        @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [ENV["username"], ENV["password"]]
       end
 
       def protected!

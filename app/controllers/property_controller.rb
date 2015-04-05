@@ -1,9 +1,16 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
 
-    delete '/property/:id' do
+    post '/property/:id' do
       property = Property.find(params[:id])
-      Property.find(params[:id]).destroy
+      user = property.user
+
+      customer = Stripe::Customer.retrieve(user.stripe_id)
+      subscription = customer.subscriptions.retrieve(property.subscription_id)
+      customer.update_subscription(plan: property.subscription_type, quantity: subscription.quantity - 1)
+
+      property.destroy
+      redirect to('/admin')
     end
 
     get '/add-property' do

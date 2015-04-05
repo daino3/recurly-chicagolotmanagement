@@ -12,7 +12,7 @@ describe 'subscriptions#create' do
       stripe_id = SecureRandom.hex(8)
       stripe_customer = double(:stripe_customer, id: stripe_id)
       expect(Stripe::Customer).to receive(:create).and_return(stripe_customer)
-      expect(stripe_customer).to receive(:update_subscription)
+      expect(stripe_customer).to receive(:create_subscription)
 
       user.create_stripe_subscription('basic', 2)
 

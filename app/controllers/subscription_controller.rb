@@ -1,5 +1,6 @@
 module ChicagoLotManagement
   class App < Sinatra::Base
+
     get '/plan-data' do
       content_type :json
 
@@ -30,12 +31,18 @@ module ChicagoLotManagement
         user = User.find_or_create_by(email: account[:email])
         user.update_attributes(account)
 
+        subscription = user.create_stripe_subscription(params[:subscription_type], params[:properties].count)
+
         params[:properties].each do |property|
-          prop_attributes = property.merge(user: user, subscription_id: params[:subscription_id])
+          prop_attributes = property.merge(
+            user: user,
+            subscription_type: params[:subscription_type],
+            subscription_id: subscription.id
+          )
+
           Property.create!(prop_attributes)
         end
 
-        user.create_stripe_subscription(params[:subscription_id], user.properties.count)
       rescue  ActiveRecord::Error => e
         puts e.message
       ensure

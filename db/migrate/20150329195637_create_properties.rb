@@ -7,6 +7,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :state, default: "Illinois"
       t.string :zip_code
       t.string :subscription_id
+      t.string :subscription_type
     end
   end
 end

@@ -5,6 +5,7 @@
     tr
       th User Name
       th User Email
+      th User Monthly Payment
       th Address
       th City
       th State
@@ -15,10 +16,12 @@
       tr
         td.user = property.user.full_name
         td.email = property.user.email
+        td.user_payments = "$ #{property.user.monthly_payments / 100}"
         td.address = property.address
         td.city = property.city
         td.state = property.state
         td.zip_code = property.zip_code
-        td.subscription_id = property.subscription_id
+        td.subscription_type = property.subscription_type
         td.delete_property
-          .button.admin-destroy-btn href="/property/#{property.id}" Destroy
+          form action="/property/#{property.id}" method='post'
+            input.button.admin-destroy-btn type='submit' value='Destroy'
