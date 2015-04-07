@@ -73,7 +73,7 @@ $(document).ready(function() {
     updateGrandTotal();
   })
 
-  // Identity card type
+  // Identify card type
   $("#number").on('blur', function(event) {
     var cardNumber = $("#number").val()
     var cardIsValid = $.payment.validateCardNumber(cardNumber)

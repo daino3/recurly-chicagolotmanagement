@@ -26,6 +26,7 @@ ul.properties {
 }
 
 .stripe-logo {
+  margin-top: 20px;
   text-align: center;
   img {
     height: 30px;
@@ -156,55 +157,32 @@ select:disabled {
 
 // -- SUBSCRIPTION DETAILS ---
 
+.logo-container {
+  background-color: $oil;
+  border-bottom: 1px solid $lightGray;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+}
+
+.subscription-name-container {
+  select#plan {
+    font-size:20px;
+    height:45px;
+    &:hover {cursor: pointer;}
+  }
+  .subscription-pricing {
+    border: 1px solid #cbcbcb;
+    line-height: 42px;
+    text-align: right;
+  }
+}
+
 .billing-info-container {
   background-color: #fafafa;
   float: left;
   padding: 20px 0;
   width:100%;
-}
-
-.subscription-details-container {
-  background-color: $oil;
-  border-bottom: 1px solid $lightGray;
-  float: right !important;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  .subscription-name-container {
-    select#plan {
-      background:  $oil;
-      border: 2px solid #fff;
-      color:#fff;
-      font-size:20px;
-      height:45px;
-      &:hover {background-color: black; cursor: pointer;}
-    }
-    &:after {
-      background: url('/images/icons/arrow-down.png') center no-repeat;
-      background-size: 30px 30px;
-      border: 0;
-      content: ' ';
-      padding: 0 0 2px;
-      pointer-events: none;
-      position: absolute;
-      right: 20px;
-      top: 8px;
-      width: 30px;
-      height: 30px;
-    }
-  }
-}
-
-.subscription-pricing {
-  border: 2px solid white;
-  background-color: $oil;
-  color: #E0F2BD;
-  display: inline-block;
-  height: 45px;
-  line-height: 45px;
-  position: relative;
 }
 
 .section-title {
@@ -236,33 +214,22 @@ select:disabled {
 
 // -- ORDER SUMMARY --------
 
-.order-summary-details {
-  background-color: #fafafa;
-}
-
-.order-summary-title {
-  background-color: #E2E7E9;
-  float: left;
-  padding: 10px 25px;
-  width: 100%;
-  color:#48626c;
-}
 
 .total, .tax, .pricing, .properties-quantity {
-  border-top:2px solid #e2e7e9;
-  color: #48626c;
-  float:right;
-  font-size: 22px;
   padding: 20px;
-  position:relative;
-  text-align:right;
   span.total-title {
-    width:70%;
+    width:80%;
+    float: left;
   }
   span.total-amount {
     display: inline-block;
-    margin-left: 8%;
-    width:30%;
+    text-align: right;
+    width:20%;
+    right: right;
+    margin-bottom: 10px;
+  }
+  span.grand-total {
+    border-top: 1px solid black;
   }
 }
 

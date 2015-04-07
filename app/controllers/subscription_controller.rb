@@ -25,7 +25,6 @@ module ChicagoLotManagement
     end
 
     post '/subscriptions/create' do
-
       begin
         account = params[:account].first
         user = User.find_or_create_by(email: account[:email])

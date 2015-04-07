@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :stripe_id
       t.string :stripe_token
       t.string :company
+      t.string :phone_number
     end
   end
 end

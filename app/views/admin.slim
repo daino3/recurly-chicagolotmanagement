@@ -4,8 +4,9 @@
     caption Property Listings
     tr
       th User Name
-      th User Email
       th User Monthly Payment
+      th User Email
+      th Phone Number
       th Address
       th City
       th State
@@ -15,8 +16,9 @@
     - for property in @properties do
       tr
         td.user = property.user.full_name
-        td.email = property.user.email
         td.user_payments = "$ #{property.user.monthly_payments / 100}"
+        td.email = property.user.email
+        td.phone = property.user.phone_number
         td.address = property.address
         td.city = property.city
         td.state = property.state
