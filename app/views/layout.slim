@@ -17,7 +17,7 @@ head
 
   javascript:
     // Configure stripe.js
-    Stripe.setPublishableKey('pk_test_T1fudZUAy97QWvSz9Fo5b94u');
+    Stripe.setPublishableKey("#{ENV['STRIPE_PUBLISHABLE_KEY']}");
 
     $.get('/plan-data', function(response) {
       window.StripePricing = response
