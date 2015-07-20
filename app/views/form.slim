@@ -79,13 +79,15 @@
               span.icon-card
               span.icon-lock
           .large-16.columns.customer-fields--card-details
-            .large-4.columns.form-input.form-input__month.no-padding
+            .large-4.columns.form-input.no-padding
               input type="text" data-stripe="exp_month" id="month" placeholder="MM" maxlength="2" class="form-input__required" required=""
-            .large-4.columns.form-input.form-input__year.no-padding
+            .large-4.columns.form-input.no-padding
               input type="text" data-stripe="exp_year" id="year" placeholder="YY" maxlength="2" class="form-input__required" required=""
-            .large-4.columns.form-input.form-input__cvv.no-padding
+            .large-4.columns.form-input.no-padding
               input type="text" data-stripe="cvv" id="cvv" class="form-input__required" placeholder="CVV" maxlength="4" required=""
-
+          .large-16.columns.customer-fields--card-number
+            .large-4.form-input
+              input type="text" data-stripe="number" id="number" class="form-input__required" placeholder="Promo Code" role="promo-code"
         .row
           h3.large-16.columns.section-title Order Summary
 

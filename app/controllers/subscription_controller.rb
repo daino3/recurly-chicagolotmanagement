@@ -9,6 +9,17 @@ module ChicagoLotManagement
       end.to_json
     end
 
+    get '/valid_promo' do
+      content_type :json
+
+      begin
+        Stripe::Coupon.retrieve(params[:coupon_id])
+        {status: 200, message: "yeah", discount: "x"}
+      rescue Stripe::InvalidRequestError => e
+        {status: 404, message: "You've entered an invalid promo code"}
+      end.to_json
+    end
+
     get '/subscribe-observation' do
       @plan = Stripe::Plan.retrieve("observation")
       slim :form, layout: true

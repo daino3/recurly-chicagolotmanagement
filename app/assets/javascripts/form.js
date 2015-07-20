@@ -87,6 +87,31 @@ $(document).ready(function() {
   });
 });
 
+$(document).on('keyup', "[role='promo-code']", function(){
+  var code = $(this).val();
+  var ele  = "[role='promo-code']"
+  // var response = _.debounce(checkPromoCode(code),300);
+  checkPromoCode(code, ele);
+  debugger
+});
+
+function checkPromoCode(code, ele) {
+  $.get('/valid_promo', {"coupon_id": code}, function(response){
+    if (response.status == 200) {
+      $(ele).addClass('valid-promo');
+      $(ele).removeClass('invalid-promo');
+      applyDiscount();
+    } else {
+      $(ele).addClass('invalid-promo');
+      $(ele).removeClass('valid-promo')
+    }
+  });
+};
+
+function applyDiscount() {
+
+}
+
 $(document).on('click', "[role='add-property']", function(){
   $list = $('ul.properties');
   var properties = $('.properties').length;
