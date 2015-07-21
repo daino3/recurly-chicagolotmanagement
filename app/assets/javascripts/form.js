@@ -1,12 +1,22 @@
-
+var SELECTORS = {
+ 'addProperty': "[role='add-property']",
+ 'discount': "[role='discount']",
+ 'promoCodeHidden': "[role='promo-code-hidden']",
+ 'formErrors': "[role='form-errors']",
+ 'grantTotal': "[role='grand-total']",
+ 'pricing': "[role='plan-pricing']",
+ 'promoCode': "[role='promo-code']",
+ 'quantity': "[role='quantity']",
+ 'removeProperty': "[role='remove-property']",
+ 'subscriptionPrice': "[role='subscription-price']"
+};
 
 function stripeResponseHandler (status, response) {
-
-  var formData = JSON.parse(JSON.stringify($('#subscription-form').serializeArray()))
-  var stripeAccount = {'name': "account[][stripe_token]", 'value': response.id}
-  var stripePlan = {'name': "subscription_type", 'value': $("#plan option:selected").text()}
-  var data = formData.concat(stripeAccount, stripePlan)
-
+  var formData = JSON.parse(JSON.stringify($('#subscription-form').serializeArray()));
+  var stripeAccount = {'name': "account[][stripe_token]", 'value': response.id};
+  var stripePlan = {'name': "subscription_type", 'value': $("#plan option:selected").text()};
+  var data = formData.concat(stripeAccount, stripePlan);
+  debugger;
   // valid test data
   // valid card ='4242424242424242'
   // valid cvv =
@@ -33,7 +43,7 @@ function subscriptionCreated(data) {
 }
 
 // A simple error handling function to expose errors to the customer
-function renderErrors (response) {
+function renderErrors(response) {
   var message = response.error.message
   var errors_markup = '<li class="form-errors--invalid-field">' + message + '</li>';
 
@@ -87,30 +97,26 @@ $(document).ready(function() {
   });
 });
 
-$(document).on('keyup', "[role='promo-code']", function(){
-  var code = $(this).val();
-  var ele  = "[role='promo-code']"
-  // var response = _.debounce(checkPromoCode(code),300);
-  checkPromoCode(code, ele);
-  debugger
-});
+$(document).on('keyup', "[role='promo-code']",
+  _.debounce(function(){
+    var $ele = $(this);
+    var code = $ele.val()
+    var couponData = {"coupon_id": code}
+    $.get('/valid_promo', couponData, function(response){
+      if (response.status == 200) {
+        $ele.addClass('valid-promo');
+        $ele.removeClass('form-input__error');
 
-function checkPromoCode(code, ele) {
-  $.get('/valid_promo', {"coupon_id": code}, function(response){
-    if (response.status == 200) {
-      $(ele).addClass('valid-promo');
-      $(ele).removeClass('invalid-promo');
-      applyDiscount();
-    } else {
-      $(ele).addClass('invalid-promo');
-      $(ele).removeClass('valid-promo')
-    }
-  });
-};
-
-function applyDiscount() {
-
-}
+        $(SELECTORS.discount).text(calcDiscount(response.discount));
+        $(SELECTORS.promoCodeHidden).val(code);
+        updateGrandTotal();
+      } else {
+        $ele.addClass('form-input__error');
+        $ele.removeClass('valid-promo');
+      };
+    });
+  }, 500)
+);
 
 $(document).on('click', "[role='add-property']", function(){
   $list = $('ul.properties');
@@ -144,8 +150,31 @@ $(document).on('click', "[role='remove-property']", function(){
   updateGrandTotal();
 })
 
-function updateGrandTotal () {
-  var pricing = $("[role='plan-pricing']").text();
-  var quant = $("[role='quantity']").text();
-  $("[role='grand-total']").html(parseInt(quant) * parseInt(pricing));
-}
+function pricing() {
+  return parseFloat($(SELECTORS.pricing).text()).toFixed(2);
+};
+
+function quantity() {
+  return parseFloat($(SELECTORS.quantity).text()).toFixed(2);
+};
+
+function discount() {
+  return parseFloat($(SELECTORS.discount).text()).toFixed(2);
+};
+
+function currentTotal() {
+  return totalBeforeDiscount() - discount();
+};
+
+function totalBeforeDiscount() {
+  return pricing() * quantity();
+};
+
+function calcDiscount(percent) {
+  return totalBeforeDiscount() * parseFloat(percent).toFixed(2);
+};
+
+function updateGrandTotal() {
+  $(SELECTORS.grantTotal).html(currentTotal());
+  return false;
+};

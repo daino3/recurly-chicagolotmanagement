@@ -13,8 +13,8 @@ module ChicagoLotManagement
       content_type :json
 
       begin
-        Stripe::Coupon.retrieve(params[:coupon_id])
-        {status: 200, message: "yeah", discount: "x"}
+        coupon = Stripe::Coupon.retrieve(params[:coupon_id])
+        {status: 200, discount: (coupon.percent_off.to_f / 100), promo_code: coupon.id}
       rescue Stripe::InvalidRequestError => e
         {status: 404, message: "You've entered an invalid promo code"}
       end.to_json

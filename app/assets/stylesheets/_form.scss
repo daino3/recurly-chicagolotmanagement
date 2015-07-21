@@ -1,3 +1,5 @@
+
+
 hr.property-separator {
   display: block;
   -webkit-margin-before: 1em;
@@ -215,7 +217,11 @@ select:disabled {
 // -- ORDER SUMMARY --------
 
 
-.total, .tax, .pricing, .properties-quantity {
+.total,
+.tax,
+.pricing,
+.properties-quantity,
+.discount {
   padding: 20px;
   span.total-title {
     width:80%;
@@ -273,4 +279,13 @@ select:disabled {
     border-color: #e35256 !important;
     color: #802e31 !important;
   }
+}
+
+input.form-input__error {
+  border-color: #e35256 !important;
+  color: #802e31 !important;
+}
+
+input.valid-promo {
+  border: 2px solid #84BE6A !important;
 }

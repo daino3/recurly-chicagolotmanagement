@@ -1,1 +1,16 @@
-invalid_promo_code.json
+{
+  "id": "12345",
+  "created": 1437443176,
+  "percent_off": 20,
+  "amount_off": null,
+  "currency": null,
+  "object": "coupon",
+  "livemode": false,
+  "duration": "forever",
+  "redeem_by": null,
+  "max_redemptions": null,
+  "times_redeemed": 0,
+  "duration_in_months": null,
+  "valid": true,
+  "metadata": {}
+}
