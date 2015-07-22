@@ -60,6 +60,8 @@
             .form-input.form-input__company
               input type="text" id="company" name="account[][company]" class="form-input__required" placeholder="Company (optional)"
 
+            input type='hidden' role='promo-code-hidden' value='' name="account[][promo_code]"
+
         .row
           h3.large-16.columns.section-title Property Information
 
@@ -87,7 +89,7 @@
               input type="text" data-stripe="cvv" id="cvv" class="form-input__required" placeholder="CVV" maxlength="4" required=""
           .large-16.columns.customer-fields--card-number
             .large-4.form-input
-              input type="text" data-stripe="number" id="number" class="form-input__required" placeholder="Promo Code" role="promo-code"
+              input type="text" placeholder="Promo Code" role="promo-code"
         .row
           h3.large-16.columns.section-title Order Summary
 

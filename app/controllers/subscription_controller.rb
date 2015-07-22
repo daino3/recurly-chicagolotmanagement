@@ -14,7 +14,7 @@ module ChicagoLotManagement
 
       begin
         coupon = Stripe::Coupon.retrieve(params[:coupon_id])
-        {status: 200, discount: (coupon.percent_off.to_f / 100), promo_code: coupon.id}
+        {status: 200, discount: (coupon.percent_off.to_f / 100), id: coupon.id}
       rescue Stripe::InvalidRequestError => e
         {status: 404, message: "You've entered an invalid promo code"}
       end.to_json
@@ -36,9 +36,11 @@ module ChicagoLotManagement
     end
 
     post '/subscriptions/create' do
+
       begin
         account = params[:account].first
         user = User.find_or_create_by(email: account[:email])
+        binding.pry
         user.update_attributes(account)
 
         subscription = user.create_stripe_subscription(params[:subscription_type], params[:properties].count)

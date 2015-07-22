@@ -18,7 +18,7 @@ function stripeResponseHandler (status, response) {
   var data = formData.concat(stripeAccount, stripePlan);
   debugger;
   // valid test data
-  // valid card ='4242424242424242'
+  // valid card ='4000000000000077'
   // valid cvv =
 
   if (status == "200"){
@@ -103,6 +103,7 @@ $(document).on('keyup', "[role='promo-code']",
     var code = $ele.val()
     var couponData = {"coupon_id": code}
     $.get('/valid_promo', couponData, function(response){
+      debugger;
       if (response.status == 200) {
         $ele.addClass('valid-promo');
         $ele.removeClass('form-input__error');
