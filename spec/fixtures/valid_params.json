@@ -1,23 +1,21 @@
 {
-    "plan":"1",
-    "account":[
+    "account": [
         {
-            "first_name":"Dain",
-            "last_name":"Hall",
-            "email":"dain@email.com",
-            "company":"dain co",
-            "stripe_token":"tok_15nwIXIDc1z7mkl7evOmOTRb"
+            "company": "",
+            "email": "dainovu3@gmail.com",
+            "first_name": "Christopher",
+            "last_name": "Hall",
+            "phone_number": "8475718206",
+            "promo_code": "12345",
+            "stripe_token": "tok_16RE88H3hodc8qSOuQ1kP5qV"
         }
     ],
-    "properties":[
+    "plan": "2",
+    "properties": [
         {
-            "address":"1234 Elm St",
-            "zip_code":"60001"
-        },
-        {
-            "address":"987 Elementary Blvd",
-            "zip_code":"60077"
+            "address": "2502 N Southport Ave #2",
+            "zip_code": "60614"
         }
     ],
-    "subscription_type":"basic"
+    "subscription_type": "observation"
 }

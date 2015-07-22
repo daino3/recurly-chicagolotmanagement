@@ -1,0 +1,6 @@
+
+1. Add Cucumber & poltergeist
+2. Add integration tests for more form filling out
+3. Add coffeescript
+4. Add Angular vs. jQuery
+5. Add subscription model & break up existing

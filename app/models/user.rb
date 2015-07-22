@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
       :email => email,
       :description => stripe_description,
       :card => stripe_token,
-      :metadata => properties.all.map(&:attributes)
+      :metadata => properties.all.map(&:attributes),
+      :coupon => promo_code
     )
 
     self.update_attribute(:stripe_id, customer.id)

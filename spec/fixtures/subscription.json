@@ -1,0 +1,33 @@
+{
+    "application_fee_percent": null,
+    "cancel_at_period_end": false,
+    "canceled_at": null,
+    "current_period_end": 1440216668,
+    "current_period_start": 1437538268,
+    "customer": "cus_6eXeb1UolN73cJ",
+    "discount": null,
+    "ended_at": null,
+    "id": "sub_6eXeSgUZWgL7VK",
+    "metadata": {},
+    "object": "subscription",
+    "plan": {
+        "amount": 9900,
+        "created": 1433107500,
+        "currency": "usd",
+        "id": "observation",
+        "interval": "month",
+        "interval_count": 1,
+        "livemode": false,
+        "metadata": {},
+        "name": "observation",
+        "object": "plan",
+        "statement_descriptor": null,
+        "trial_period_days": null
+    },
+    "quantity": 1,
+    "start": 1437538268,
+    "status": "active",
+    "tax_percent": null,
+    "trial_end": null,
+    "trial_start": null
+}

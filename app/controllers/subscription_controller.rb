@@ -40,7 +40,7 @@ module ChicagoLotManagement
       begin
         account = params[:account].first
         user = User.find_or_create_by(email: account[:email])
-        binding.pry
+
         user.update_attributes(account)
 
         subscription = user.create_stripe_subscription(params[:subscription_type], params[:properties].count)
