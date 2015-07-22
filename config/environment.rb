@@ -21,6 +21,7 @@ require 'sinatra/base'
 require 'sinatra/assetpack'
 require 'sinatra/support'
 require 'sinatra/partial'
+require "sinatra/activerecord"
 # view rendering
 require 'slim'
 # API response hash / json helper

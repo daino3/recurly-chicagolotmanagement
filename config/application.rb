@@ -2,6 +2,7 @@ module ChicagoLotManagement
   class App < Sinatra::Base
     register Sinatra::AssetPack
     register Sinatra::Partial
+    register Sinatra::ActiveRecordExtension
     helpers  Sinatra::HtmlHelpers # http://www.rubydoc.info/gems/sinatra-support/1.2.2/Sinatra/HtmlHelpers
 
     set :root, APP_ROOT
